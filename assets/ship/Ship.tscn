@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu20fn85guvwl"]
+
+[ext_resource type="PackedScene" uid="uid://1plr1se3cupc" path="res://assets/ship/body/ShipBody.tscn" id="1_rgt4d"]
+[ext_resource type="PackedScene" uid="uid://08rcab6s8qg8" path="res://assets/ship/thruster/ShipTruster.tscn" id="2_a6jxq"]
+
+[node name="Ship" type="StaticBody3D"]
+
+[node name="Body" parent="." instance=ExtResource("1_rgt4d")]
+
+[node name="Truster1" parent="." instance=ExtResource("2_a6jxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2.5)
+
+[node name="Truster2" parent="." instance=ExtResource("2_a6jxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -2.5)

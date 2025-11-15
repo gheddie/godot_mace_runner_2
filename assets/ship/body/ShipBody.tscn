@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1plr1se3cupc"]
+
+[ext_resource type="PackedScene" uid="uid://ht50e4vivaps" path="res://assets/ship/body/SpaceshipBody.glb" id="1_8xfqf"]
+
+[node name="ShipBody" type="StaticBody3D"]
+
+[node name="SpaceshipBody" parent="." instance=ExtResource("1_8xfqf")]

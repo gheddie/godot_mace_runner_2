@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://08rcab6s8qg8"]
+
+[ext_resource type="PackedScene" uid="uid://uucuwbvnuxmq" path="res://assets/ship/thruster/SpaceshipThruster.glb" id="1_i0xd7"]
+
+[node name="ShipTruster" type="StaticBody3D"]
+
+[node name="SpaceshipThruster" parent="." instance=ExtResource("1_i0xd7")]
