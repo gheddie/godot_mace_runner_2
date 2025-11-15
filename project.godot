@@ -15,6 +15,10 @@ run/main_scene="uid://pn2xwulf311q"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MaceElementFactoryInstance="*res://globals/MaceElementFactory.gd"
+
 [rendering]
 
 anti_aliasing/quality/msaa_3d=2
