@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://pn2xwulf311q"]
 
-[ext_resource type="Script" uid="uid://dxsf1bgkic07p" path="res://sandbox/MaceSandBox.gd" id="1_pn123"]
+[ext_resource type="Script" uid="uid://dxsf1bgkic07p" path="res://sandbox/ship/MaceSandBox.gd" id="1_pn123"]
 [ext_resource type="PackedScene" uid="uid://bu20fn85guvwl" path="res://assets/ship/Ship.tscn" id="3_44xxg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_44xxg"]

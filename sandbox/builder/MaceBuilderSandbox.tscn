@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp6ub736kjvkl"]
+
+[ext_resource type="Script" uid="uid://cnqyw2cat4w6o" path="res://sandbox/builder/MaceBuilderSandbox.gd" id="1_6xwwr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3nhba"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6xwwr"]
+sky_material = SubResource("ProceduralSkyMaterial_3nhba")
+
+[sub_resource type="Environment" id="Environment_q5u24"]
+background_mode = 2
+sky = SubResource("Sky_6xwwr")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xwwr"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6xwwr"]
+
+[node name="MaceBuilderSandbox" type="Node3D"]
+script = ExtResource("1_6xwwr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q5u24")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 77.592476, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 77.592476, 0)
+
+[node name="Buttons" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AddTrail" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Add Trail"
+
+[node name="AddFork" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Add Fork"
+
+[node name="StartMarker" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_6xwwr")
+mesh = SubResource("SphereMesh_6xwwr")

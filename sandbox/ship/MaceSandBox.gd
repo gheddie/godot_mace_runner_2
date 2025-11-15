@@ -22,15 +22,12 @@ func removeObjects() -> void:
 
 func addTrail() -> void:
 	print("add trail...")
-	# var trail: BaseMaceElement = MaceElementFactoryInstance.buildElement(MaceElementFactory.MaceElementType.TRAIL)
 	var trail: BaseMaceElement = MaceElementFactoryInstance.buildTrailElement()
 	add_child(trail)
 	maceElements[trail.get_instance_id()] = trail
 	
 func addFork() -> void:
 	print("add fork...")
-	# var fork: BaseMaceElement = MaceElementFactoryInstance.buildElement(MaceElementFactory.MaceElementType.FORK)
-	MaceElementFactoryInstance.buildElement(MaceElementFactory.MaceElementType.FORK)
 	var fork: BaseMaceElement = MaceElementFactoryInstance.buildForkElement()
 	add_child(fork)
 	maceElements[fork.get_instance_id()] = fork

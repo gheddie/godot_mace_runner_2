@@ -12,3 +12,8 @@ func debugExpansion() -> void:
 
 func removeFromScene() -> void:
 	queue_free()
+
+@abstract func getInstanceId() -> String
+
+func acceptPosition(position: Vector3) -> void:
+	global_position = position
