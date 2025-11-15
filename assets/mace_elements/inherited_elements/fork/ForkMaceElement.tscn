@@ -1,5 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bagwachi4rxh"]
+[gd_scene load_steps=4 format=3 uid="uid://bagwachi4rxh"]
 
-[ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_lqnx7"]
+[ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_ijvp6"]
+[ext_resource type="Script" uid="uid://cc6rj84skpc4o" path="res://assets/mace_elements/inherited_elements/fork/ForkMaceElement.gd" id="2_fevai"]
+[ext_resource type="PackedScene" uid="uid://chyu5vlumthtw" path="res://assets/mace_elements/inherited_elements/fork/fork.glb" id="2_s8jsc"]
 
-[node name="ForkTrailElement" instance=ExtResource("1_lqnx7")]
+[node name="ForkTrailElement" instance=ExtResource("1_ijvp6")]
+script = ExtResource("2_fevai")
+
+[node name="fork" parent="." index="1" instance=ExtResource("2_s8jsc")]

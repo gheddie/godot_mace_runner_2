@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bm0fr1ldgd6iv"
-path="res://.godot/imported/fork.blend-7416d0cfae182a2187590b3d68c2b13f.scn"
+path="res://.godot/imported/fork.blend-ea086840a57175a27de88e95169eccf6.scn"
 
 [deps]
 
-source_file="res://fork.blend"
-dest_files=["res://.godot/imported/fork.blend-7416d0cfae182a2187590b3d68c2b13f.scn"]
+source_file="res://assets/mace_elements/inherited_elements/fork/fork.blend"
+dest_files=["res://.godot/imported/fork.blend-ea086840a57175a27de88e95169eccf6.scn"]
 
 [params]
 

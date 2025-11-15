@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ya7eka28wxbf"
-path="res://.godot/imported/trail.blend-81dd2c4ceb3a63d5b75e56469b61cb1b.scn"
+path="res://.godot/imported/trail.blend-0ca915ae97ef0226af686b6b335cb760.scn"
 
 [deps]
 
-source_file="res://trail.blend"
-dest_files=["res://.godot/imported/trail.blend-81dd2c4ceb3a63d5b75e56469b61cb1b.scn"]
+source_file="res://assets/mace_elements/inherited_elements/trail/trail.blend"
+dest_files=["res://.godot/imported/trail.blend-0ca915ae97ef0226af686b6b335cb760.scn"]
 
 [params]
 
