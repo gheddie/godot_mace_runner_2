@@ -17,3 +17,7 @@ func removeFromScene() -> void:
 
 func acceptPosition(position: Vector3) -> void:
 	global_position = position
+	
+func calculateSuccessorPosition(predecessor: BaseMaceElement) -> Vector3:
+	var predecessorPosition: Vector3 = predecessor.global_position
+	return Vector3(predecessorPosition.x + 10.0, predecessorPosition.y, predecessorPosition.z)

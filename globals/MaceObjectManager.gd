@@ -8,7 +8,14 @@ var actualElement: BaseMaceElement
 
 func registerMaceElement(element: BaseMaceElement) -> Vector3:
 	print(str("registered trail element: ", element.getInstanceId()))
-	actualElement = element
 	maceElements[element.getInstanceId()] = element
 	print(str("now managing ", str(maceElements.size()), " objects"))
-	return Vector3(0.0, 0.0, 0.0)
+	var calculatedPosition: Vector3
+	if actualElement != null:
+		calculatedPosition = actualElement.calculateSuccessorPosition(actualElement)
+		print(str("calculated position: ", str(calculatedPosition)))
+	else:
+		calculatedPosition = Vector3.ZERO
+		print("calculated NULL position...")
+	actualElement = element
+	return calculatedPosition
