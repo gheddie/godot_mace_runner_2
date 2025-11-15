@@ -14,3 +14,8 @@ config/name="mace-runner-2"
 run/main_scene="uid://pn2xwulf311q"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=2
