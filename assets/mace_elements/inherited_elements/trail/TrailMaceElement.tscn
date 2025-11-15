@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbpob88xq8t14"]
+
+[ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_0tnhm"]
+
+[node name="TrailMaceElement" instance=ExtResource("1_0tnhm")]
