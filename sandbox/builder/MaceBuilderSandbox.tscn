@@ -31,7 +31,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 77.592476, 0)
+transform = Transform3D(1, 0, 0, 0, 0.3074561, 0.95156217, 0, -0.95156217, 0.3074561, 0, 30, 1.2325339)
 
 [node name="Buttons" type="GridContainer" parent="."]
 anchors_preset = 15
