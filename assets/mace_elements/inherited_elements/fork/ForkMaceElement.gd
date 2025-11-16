@@ -18,4 +18,13 @@ func getDockPositionRight() -> Vector3:
 	return dockRight.global_position
 
 func extend() -> void:
-	pass
+	# left
+	var leftTrail = MaceElementFactoryInstance.buildTrailElement()
+	leftTrail.acceptPosition(getDockPositionLeft())
+	# createdFork.rotateY(30)
+	get_tree().get_current_scene().add_child(leftTrail)
+# right
+	var rightTrail = MaceElementFactoryInstance.buildTrailElement()
+	rightTrail.acceptPosition(getDockPositionRight())
+	# createdFork.rotateY(30)
+	get_tree().get_current_scene().add_child(rightTrail)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bagwachi4rxh"]
+[gd_scene load_steps=6 format=3 uid="uid://bagwachi4rxh"]
 
 [ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_ijvp6"]
 [ext_resource type="Script" uid="uid://cc6rj84skpc4o" path="res://assets/mace_elements/inherited_elements/fork/ForkMaceElement.gd" id="2_fevai"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fevai"]
 size = Vector3(14, 0.2, 14.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0i7n"]
+size = Vector3(14.1, 2.1000001, 18)
 
 [node name="ForkTrailElement" instance=ExtResource("1_ijvp6")]
 script = ExtResource("2_fevai")
@@ -16,5 +19,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 [node name="BottomCollider" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.100000024, -9.536743e-07)
 shape = SubResource("BoxShape3D_fevai")
+
+[node name="Area" type="Area3D" parent="." index="2"]
+
+[node name="AreaShape" type="CollisionShape3D" parent="Area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05, 0.85, 0)
+shape = SubResource("BoxShape3D_l0i7n")
 
 [editable path="fork"]
