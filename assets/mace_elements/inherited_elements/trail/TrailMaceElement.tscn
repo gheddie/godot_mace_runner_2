@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://rr1hfy4tjsb3" path="res://assets/mace_elements/inherited_elements/trail/trail.glb" id="2_odeht"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f8r5u"]
-size = Vector3(8, 0.3, 5)
+size = Vector3(8, 0.20124511, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8rvx"]
 size = Vector3(8, 1.2, 0.5)
@@ -26,7 +26,7 @@ script = ExtResource("2_f8r5u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
 [node name="BottomCollider" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.050000012, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.09930419, 0)
 shape = SubResource("BoxShape3D_f8r5u")
 
 [node name="TopCollider1" type="CollisionShape3D" parent="." index="2"]

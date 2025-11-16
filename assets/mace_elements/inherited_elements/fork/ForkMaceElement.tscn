@@ -5,15 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://chyu5vlumthtw" path="res://assets/mace_elements/inherited_elements/fork/fork.glb" id="2_s8jsc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fevai"]
-size = Vector3(15, 0.7, 19)
+size = Vector3(14, 0.2, 14.6)
 
 [node name="ForkTrailElement" instance=ExtResource("1_ijvp6")]
 script = ExtResource("2_fevai")
 
-[node name="fork" parent="." index="1" instance=ExtResource("2_s8jsc")]
+[node name="fork" parent="." index="0" instance=ExtResource("2_s8jsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 
-[node name="Collider" type="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.15, 0)
+[node name="BottomCollider" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.100000024, -9.536743e-07)
 shape = SubResource("BoxShape3D_fevai")
 
 [editable path="fork"]

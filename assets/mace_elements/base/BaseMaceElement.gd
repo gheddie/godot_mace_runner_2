@@ -30,3 +30,6 @@ func onShipEntered() -> void:
 		hasExtended = true
 
 @abstract func extend() -> void
+
+func getRandom() -> bool:
+	return randi() % 2 == 0

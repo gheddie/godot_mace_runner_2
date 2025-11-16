@@ -35,7 +35,11 @@ func flash() -> void:
 
 func extend() -> void:
 	print(str("extending trail element --> ", str(get_instance_id())))
-	var createdTrail: TrailMaceElement = MaceElementFactoryInstance.buildTrailElement()
-	createdTrail.acceptPosition(getDockPosition())
+	var createdSuccessor: BaseMaceElement
+	if (getRandom()):
+		createdSuccessor = MaceElementFactoryInstance.buildTrailElement()
+	else:
+		createdSuccessor = MaceElementFactoryInstance.buildForkElement()
+	createdSuccessor.acceptPosition(getDockPosition())
 	# createdFork.rotateY(30)
-	get_tree().get_current_scene().add_child(createdTrail)
+	get_tree().get_current_scene().add_child(createdSuccessor)
