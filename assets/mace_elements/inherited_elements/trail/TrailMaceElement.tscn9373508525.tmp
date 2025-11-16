@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbpob88xq8t14"]
+[gd_scene load_steps=8 format=3 uid="uid://dbpob88xq8t14"]
 
 [ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_bgc81"]
 [ext_resource type="Script" uid="uid://bfgxhu3cqpdgr" path="res://assets/mace_elements/inherited_elements/trail/TrailMaceElement.gd" id="2_f8r5u"]
@@ -13,38 +13,30 @@ size = Vector3(8, 1.2, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1r76h"]
 size = Vector3(8, 0.3, 1.9)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3gqfe"]
-size = Vector3(8, 0.3, 2.2)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_66p6m"]
 size = Vector3(8, 2.3, 8.2)
 
 [node name="TrailMaceElement" instance=ExtResource("1_bgc81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 script = ExtResource("2_f8r5u")
 
-[node name="trail" parent="." index="0" instance=ExtResource("2_odeht")]
+[node name="trail" parent="." index="1" instance=ExtResource("2_odeht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
-[node name="BottomCollider" type="CollisionShape3D" parent="." index="1"]
+[node name="Collider" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.050000012, 0)
 shape = SubResource("BoxShape3D_f8r5u")
 
-[node name="TopCollider1" type="CollisionShape3D" parent="." index="2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, 3.7500002)
 shape = SubResource("BoxShape3D_j8rvx")
 
-[node name="TopCollider2" type="CollisionShape3D" parent="." index="3"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, -3.7499998)
 shape = SubResource("BoxShape3D_j8rvx")
 
-[node name="DiagCollider1" type="CollisionShape3D" parent="." index="4"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 4, 0.5281089, -2.7950964)
 shape = SubResource("BoxShape3D_1r76h")
-
-[node name="DiagCollider2" type="CollisionShape3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 4, 0.5933013, 2.8883975)
-shape = SubResource("BoxShape3D_3gqfe")
 
 [node name="Area" type="Area3D" parent="." index="6"]
 

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b73u22yt1k3ch"]
+
+[ext_resource type="PackedScene" uid="uid://bagwachi4rxh" path="res://assets/mace_elements/inherited_elements/fork/ForkMaceElement.tscn" id="1_82nsi"]
+[ext_resource type="PackedScene" uid="uid://dbpob88xq8t14" path="res://assets/mace_elements/inherited_elements/trail/TrailMaceElement.tscn" id="2_v1up1"]
+[ext_resource type="PackedScene" uid="uid://bu20fn85guvwl" path="res://assets/ship/Ship.tscn" id="3_bwag6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_82nsi"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_v1up1"]
+sky_material = SubResource("ProceduralSkyMaterial_82nsi")
+
+[sub_resource type="Environment" id="Environment_bwag6"]
+background_mode = 2
+sky = SubResource("Sky_v1up1")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="ManualPlacingTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bwag6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Fork1" parent="." instance=ExtResource("1_82nsi")]
+
+[node name="Trail1" parent="." instance=ExtResource("2_v1up1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="Trail2" parent="." instance=ExtResource("2_v1up1")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 18.999998, 0, -9.5)
+
+[node name="Trail3" parent="." instance=ExtResource("2_v1up1")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 12.1, 0, -5.5)
+
+[node name="Ship" parent="." instance=ExtResource("3_bwag6")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 23.4, 0.6, -11.2)
+
+[node name="Trail4" parent="." instance=ExtResource("2_v1up1")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 25.899998, 0, -13.5)

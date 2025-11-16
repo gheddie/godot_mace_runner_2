@@ -9,8 +9,8 @@ enum MaceElementType {
 	TRAIL, FORK
 }
 
-func buildTrailElement() -> BaseMaceElement:
+func buildTrailElement() -> TrailMaceElement:
 	return trailInstance.instantiate();
 	
-func buildForkElement() -> BaseMaceElement:
+func buildForkElement() -> ForkMaceElement:
 	return forkInstance.instantiate();
