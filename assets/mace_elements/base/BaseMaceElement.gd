@@ -4,9 +4,6 @@ extends StaticBody3D
 
 var hasExtended: bool = false
 
-func _ready() -> void:
-	pass # Replace with function body.
-
 @abstract func getExpansion() -> int
 
 func debugExpansion() -> void:

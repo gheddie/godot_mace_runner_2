@@ -20,7 +20,6 @@ size = Vector3(8, 0.3, 2.2)
 size = Vector3(8, 2.3, 8.2)
 
 [node name="TrailMaceElement" instance=ExtResource("1_bgc81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 script = ExtResource("2_f8r5u")
 
 [node name="trail" parent="." index="0" instance=ExtResource("2_odeht")]
