@@ -8,6 +8,7 @@
 size = Vector3(1, 0.4, 0.8)
 
 [node name="Ship" type="RigidBody3D"]
+lock_rotation = true
 script = ExtResource("1_tf6b1")
 
 [node name="Body" parent="." instance=ExtResource("1_rgt4d")]

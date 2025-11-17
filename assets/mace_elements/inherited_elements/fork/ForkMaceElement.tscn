@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bagwachi4rxh"]
+[gd_scene load_steps=9 format=3 uid="uid://bagwachi4rxh"]
 
 [ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_ijvp6"]
 [ext_resource type="Script" uid="uid://cc6rj84skpc4o" path="res://assets/mace_elements/inherited_elements/fork/ForkMaceElement.gd" id="2_fevai"]
@@ -10,21 +10,42 @@ size = Vector3(14, 0.2, 14.6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0i7n"]
 size = Vector3(14.1, 2.1000001, 18)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7ns2"]
+size = Vector3(12.2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wpic"]
+size = Vector3(1.5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bs0eu"]
+size = Vector3(1, 2.1000001, 5)
+
 [node name="ForkTrailElement" instance=ExtResource("1_ijvp6")]
 script = ExtResource("2_fevai")
 
-[node name="fork" parent="." index="0" instance=ExtResource("2_s8jsc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-
-[node name="BottomCollider" type="CollisionShape3D" parent="." index="1"]
+[node name="BottomCollider" type="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.100000024, -9.536743e-07)
 shape = SubResource("BoxShape3D_fevai")
+
+[node name="fork" parent="." index="1" instance=ExtResource("2_s8jsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 
 [node name="Area" type="Area3D" parent="." index="2"]
 
 [node name="AreaShape" type="CollisionShape3D" parent="Area" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05, 0.85, 0)
 shape = SubResource("BoxShape3D_l0i7n")
+
+[node name="LeftCollider" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(0.90630776, 0, 0.42261827, 0, 2.8500001, 0, -0.42261827, 0, 0.90630776, 5.3655844, 1.4, -4.9041667)
+shape = SubResource("BoxShape3D_o7ns2")
+
+[node name="RightCollider" type="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(7.6129847, 0, -0.42261827, 0, 2, 0, 3.5499933, 0, 0.90630776, 5.24844, 0.8, 4.907496)
+shape = SubResource("BoxShape3D_7wpic")
+
+[node name="BackCollider" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0.8500001, 0)
+shape = SubResource("BoxShape3D_bs0eu")
 
 [connection signal="body_entered" from="Area" to="." method="onBodyEntered"]
 
