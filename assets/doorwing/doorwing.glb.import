@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cos1cx3wrex4u"
-path="res://.godot/imported/door.glb-2773c45339df484774034d9cf58ab4c7.scn"
+uid="uid://o7g55nky4rrr"
+path="res://.godot/imported/doorwing.glb-919c3f909e044a7ed4c75602b839da54.scn"
 
 [deps]
 
-source_file="res://assets/door/door.glb"
-dest_files=["res://.godot/imported/door.glb-2773c45339df484774034d9cf58ab4c7.scn"]
+source_file="res://assets/doorwing/doorwing.glb"
+dest_files=["res://.godot/imported/doorwing.glb-919c3f909e044a7ed4c75602b839da54.scn"]
 
 [params]
 

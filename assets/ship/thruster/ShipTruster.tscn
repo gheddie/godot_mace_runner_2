@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://08rcab6s8qg8"]
+[gd_scene load_steps=3 format=3 uid="uid://08rcab6s8qg8"]
 
+[ext_resource type="Script" uid="uid://dujwbscmercvl" path="res://assets/ship/thruster/ShipTruster.gd" id="1_8dboq"]
 [ext_resource type="PackedScene" uid="uid://uucuwbvnuxmq" path="res://assets/ship/thruster/SpaceshipThruster.glb" id="1_i0xd7"]
 
 [node name="ShipTruster" type="StaticBody3D"]
+script = ExtResource("1_8dboq")
 
 [node name="SpaceshipThruster" parent="." instance=ExtResource("1_i0xd7")]
+
+[node name="FanHolder" parent="SpaceshipThruster" index="1"]
+transform = Transform3D(-2.117969e-07, 0.19999999, 5.6824806e-08, 0, -8.742277e-09, 1.3000001, 1.3000001, 3.2584136e-08, 9.257937e-15, 0.7, 0, 0)
+
+[editable path="SpaceshipThruster"]

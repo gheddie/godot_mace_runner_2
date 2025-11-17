@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://mqtnxx81mhn2"
-path="res://.godot/imported/door.blend-6d2a50d54c8cca64e381323a548c1401.scn"
+uid="uid://bti7m07o8ufxu"
+path="res://.godot/imported/doorwing.blend-5311ac14e6485547f459c3ac5d695730.scn"
 
 [deps]
 
-source_file="res://assets/door/door.blend"
-dest_files=["res://.godot/imported/door.blend-6d2a50d54c8cca64e381323a548c1401.scn"]
+source_file="res://assets/doorwing/doorwing.blend"
+dest_files=["res://.godot/imported/doorwing.blend-5311ac14e6485547f459c3ac5d695730.scn"]
 
 [params]
 

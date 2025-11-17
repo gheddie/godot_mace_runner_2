@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ct3fv2i4rwctg"]
 
-[ext_resource type="PackedScene" uid="uid://cos1cx3wrex4u" path="res://assets/door/door.glb" id="1_q1bah"]
 [ext_resource type="Script" uid="uid://qb7m6pmue7cy" path="res://assets/door/Door.gd" id="1_syw6n"]
+[ext_resource type="PackedScene" uid="uid://dl2def4q8mrwr" path="res://assets/doorwing/Doorwing.tscn" id="2_syw6n"]
 
 [node name="Door" type="StaticBody3D"]
 script = ExtResource("1_syw6n")
 
-[node name="door" parent="." instance=ExtResource("1_q1bah")]
+[node name="DoorwingLeft" parent="." instance=ExtResource("2_syw6n")]
 
-[editable path="door"]
+[node name="DoorwingRight" parent="." instance=ExtResource("2_syw6n")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

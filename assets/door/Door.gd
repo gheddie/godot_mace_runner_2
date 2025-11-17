@@ -2,10 +2,9 @@ class_name Door
 
 extends StaticBody3D
 
-@onready var animator: AnimationPlayer = $door/AnimationPlayer
+@onready var leftWing: DoorWing = $DoorwingLeft
+@onready var rightWing: DoorWing = $DoorwingRight
 
-func close() -> void:
-	animator.play_backwards("WingAction")	
-	
 func open() -> void:
-	animator.play("WingAction")
+	leftWing.open()
+	rightWing.open()

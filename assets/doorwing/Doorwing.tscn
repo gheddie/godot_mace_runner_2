@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl2def4q8mrwr"]
+
+[ext_resource type="PackedScene" uid="uid://bti7m07o8ufxu" path="res://assets/doorwing/doorwing.blend" id="1_bx1sh"]
+[ext_resource type="Script" uid="uid://dcjqa5bc0jbgo" path="res://assets/doorwing/Doorwing.gd" id="1_mkvs7"]
+
+[node name="Doorwing" type="StaticBody3D"]
+script = ExtResource("1_mkvs7")
+
+[node name="doorwing" parent="." instance=ExtResource("1_bx1sh")]
+
+[editable path="doorwing"]
