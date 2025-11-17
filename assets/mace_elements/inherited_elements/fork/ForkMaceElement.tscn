@@ -26,4 +26,6 @@ shape = SubResource("BoxShape3D_fevai")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05, 0.85, 0)
 shape = SubResource("BoxShape3D_l0i7n")
 
+[connection signal="body_entered" from="Area" to="." method="onBodyEntered"]
+
 [editable path="fork"]

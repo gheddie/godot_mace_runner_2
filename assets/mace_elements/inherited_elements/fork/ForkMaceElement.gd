@@ -16,15 +16,20 @@ func getDockPositionLeft() -> Vector3:
 
 func getDockPositionRight() -> Vector3:
 	return dockRight.global_position
+	
+func onBodyEntered(body: Node3D) -> void:
+	if body is Ship:
+		print(str("entered --> ", str(body)))
+		onShipEntered()
 
 func extend() -> void:
 	# left
 	var leftTrail = MaceElementFactoryInstance.buildTrailElement()
 	leftTrail.acceptPosition(getDockPositionLeft())
-	# createdFork.rotateY(30)
+	leftTrail.rotateY(30)
 	get_tree().get_current_scene().add_child(leftTrail)
 # right
 	var rightTrail = MaceElementFactoryInstance.buildTrailElement()
 	rightTrail.acceptPosition(getDockPositionRight())
-	# createdFork.rotateY(30)
+	rightTrail.rotateY(-30)
 	get_tree().get_current_scene().add_child(rightTrail)
