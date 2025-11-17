@@ -22,14 +22,18 @@ func onBodyEntered(body: Node3D) -> void:
 		print(str("entered --> ", str(body)))
 		onShipEntered()
 
-func extend() -> void:
+func extend(extendedElement: BaseMaceElement) -> void:
 	# left
 	var leftTrail = MaceElementFactoryInstance.buildTrailElement()
 	leftTrail.acceptPosition(getDockPositionLeft())
-	leftTrail.rotateY(30)
+	var rotationLeft = extendedElement.rotationDegrees + 30.0
+	leftTrail.rotateY(rotationLeft)
+	leftTrail.rotationDegrees = rotationLeft
 	get_tree().get_current_scene().add_child(leftTrail)
-# right
+	# right
 	var rightTrail = MaceElementFactoryInstance.buildTrailElement()
 	rightTrail.acceptPosition(getDockPositionRight())
-	rightTrail.rotateY(-30)
+	var rotationRight = extendedElement.rotationDegrees - 30.0
+	rightTrail.rotateY(rotationRight)
+	leftTrail.rotationDegrees = rotationRight
 	get_tree().get_current_scene().add_child(rightTrail)

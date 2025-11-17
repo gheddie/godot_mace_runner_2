@@ -33,7 +33,7 @@ func flash() -> void:
 	# var c = delimiter1.mesh.surface_set_material()
 	pass
 
-func extend() -> void:
+func extend(extendedElement: BaseMaceElement) -> void:
 	print(str("extending trail element --> ", str(get_instance_id())))
 	var createdSuccessor: BaseMaceElement
 	if (getRandom()):
@@ -41,5 +41,7 @@ func extend() -> void:
 	else:
 		createdSuccessor = MaceElementFactoryInstance.buildForkElement()
 	createdSuccessor.acceptPosition(getDockPosition())
-	# createdFork.rotateY(30)
+	var newRotation = extendedElement.rotationDegrees
+	createdSuccessor.rotateY(newRotation)
+	createdSuccessor.rotationDegrees = newRotation
 	get_tree().get_current_scene().add_child(createdSuccessor)

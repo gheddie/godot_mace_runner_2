@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 	var trailLeft: TrailMaceElement = MaceElementFactoryInstance.buildTrailElement()
 	trailLeft.acceptPosition(fork1.getDockPositionLeft())
-	trailLeft.rotateY(30)
+	trailLeft.rotateY(30.0)
 	add_child(trailLeft)
 	
 	var trailRight: TrailMaceElement = MaceElementFactoryInstance.buildTrailElement()
@@ -28,7 +28,7 @@ func _ready() -> void:
 	# links mit Fork weiter...
 	var fork2: ForkMaceElement = MaceElementFactoryInstance.buildForkElement()
 	fork2.acceptPosition(trailLeft.getDockPosition())
-	fork2.rotateY(30)
+	fork2.rotateY(30.0)
 	add_child(fork2)
 	
 	# rechter Ausgang mit 2 Trails weiter...
@@ -43,7 +43,7 @@ func _ready() -> void:
 	# nochmal nach links nach Fork 2
 	var trailFinal: TrailMaceElement = MaceElementFactoryInstance.buildTrailElement()
 	trailFinal.acceptPosition(fork2.getDockPositionLeft())
-	trailFinal.rotateY(60)
+	trailFinal.rotateY(60.0)
 	add_child(trailFinal)
 
 func switchToShip() -> void:
