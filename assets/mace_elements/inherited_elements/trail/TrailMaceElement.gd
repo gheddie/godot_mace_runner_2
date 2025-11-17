@@ -9,8 +9,10 @@ extends BaseMaceElement
 @onready var delimiter3: MeshInstance3D = $trail/Delimiter3
 @onready var delimiter4: MeshInstance3D = $trail/Delimiter4
 
-func getExpansion() -> int:
-	return 4
+@onready var door: Door = $Door
+
+func _ready() -> void:
+	door.open()
 
 func getInstanceId() -> String:
 	return str("Trail@", str(get_instance_id()))
@@ -21,17 +23,11 @@ func getDockPosition() -> Vector3:
 func onBodyEntered(body: Node3D) -> void:
 	if body is Ship:
 		print(str("entered --> ", str(body)))
-		flash()
 		onShipEntered()
 
 func onBodyExited(body: Node3D) -> void:
 	if body is Ship:
-		print(str("exited --> ", str(body)))
-		flash()
-
-func flash() -> void:
-	# var c = delimiter1.mesh.surface_set_material()
-	pass
+		print(str("exited --> ", str(body)))		
 
 func extend(extendedElement: BaseMaceElement) -> void:
 	print(str("extending trail element --> ", str(get_instance_id())))
@@ -45,3 +41,6 @@ func extend(extendedElement: BaseMaceElement) -> void:
 	createdSuccessor.rotateY(newRotation)
 	createdSuccessor.rotationDegrees = newRotation
 	get_tree().get_current_scene().add_child(createdSuccessor)
+
+func removeDoor() -> void:
+	door.queue_free()

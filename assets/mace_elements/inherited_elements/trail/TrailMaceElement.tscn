@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbpob88xq8t14"]
+[gd_scene load_steps=10 format=3 uid="uid://dbpob88xq8t14"]
 
 [ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_bgc81"]
 [ext_resource type="Script" uid="uid://bfgxhu3cqpdgr" path="res://assets/mace_elements/inherited_elements/trail/TrailMaceElement.gd" id="2_f8r5u"]
 [ext_resource type="PackedScene" uid="uid://rr1hfy4tjsb3" path="res://assets/mace_elements/inherited_elements/trail/trail.glb" id="2_odeht"]
+[ext_resource type="PackedScene" uid="uid://ct3fv2i4rwctg" path="res://assets/door/Door.tscn" id="4_j8rvx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f8r5u"]
 size = Vector3(8, 0.20124511, 5)
@@ -50,6 +51,9 @@ shape = SubResource("BoxShape3D_3gqfe")
 [node name="AreaShape" type="CollisionShape3D" parent="Area" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.0500001, 1.1920929e-07)
 shape = SubResource("BoxShape3D_66p6m")
+
+[node name="Door" parent="." index="7" instance=ExtResource("4_j8rvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
 [connection signal="body_entered" from="Area" to="." method="onBodyEntered"]
 [connection signal="body_exited" from="Area" to="." method="onBodyExited"]

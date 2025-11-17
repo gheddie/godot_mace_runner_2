@@ -28,4 +28,6 @@ func _physics_process(delta: float) -> void:
 	rotation.y = body_rotation
 		
 	apply_impulse(velocity.rotated(Vector3.UP, rotation.y), Vector3.ZERO)
-	apply_torque(velocity.rotated(Vector3.UP, rotation.x))
+	
+	if Input.is_action_pressed("thrust_upwards"):
+		apply_force(Vector3(0,25.0,0),Vector3(0,0,0))

@@ -6,11 +6,6 @@ var hasExtended: bool = false
 
 var rotationDegrees: float
 
-@abstract func getExpansion() -> int
-
-func debugExpansion() -> void:
-	print("my expansion is ", str(getExpansion()))
-
 func removeFromScene() -> void:
 	queue_free()
 
