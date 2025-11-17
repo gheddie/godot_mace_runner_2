@@ -35,5 +35,5 @@ func extend(extendedElement: BaseMaceElement) -> void:
 	rightTrail.acceptPosition(getDockPositionRight())
 	var rotationRight = extendedElement.rotationDegrees - 30.0
 	rightTrail.rotateY(rotationRight)
-	leftTrail.rotationDegrees = rotationRight
+	rightTrail.rotationDegrees = rotationRight
 	get_tree().get_current_scene().add_child(rightTrail)
