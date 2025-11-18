@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("thrust_upwards"):
 		apply_force(Vector3(0,25.0,0),Vector3(0,0,0))
 		
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		shoot()
 
 func shoot() -> void:	

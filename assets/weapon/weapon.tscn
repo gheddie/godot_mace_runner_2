@@ -8,4 +8,10 @@ script = ExtResource("1_25dmf")
 
 [node name="weapon" parent="." instance=ExtResource("1_b0dug")]
 
+[node name="Cylinder_001" parent="weapon" index="0"]
+transform = Transform3D(0, 3.8778555, -3.5527137e-15, -0.79999995, 0, 0, 0, -2.842171e-14, 0.80000013, 0.4000001, 0, 0)
+
+[node name="ShootingRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(-4.371139e-06, -100, 0, 100, -4.371139e-06, 0, 0, 0, 100, 5.65, 0, 0)
+
 [editable path="weapon"]
