@@ -6,12 +6,12 @@ extends RigidBody3D
 
 var body_rotation: float
 
-const MAX_SPEED: float = 1.0
+const MAX_SPEED: float = 0.5
 
 const ROTATION_DIFF = 0.05
 
-@onready var weapon1Anim: AnimationPlayer = $Weapon1/weapon/AnimationPlayer
-@onready var weapon2Anim: AnimationPlayer = $Weapon2/weapon/AnimationPlayer
+@onready var weapon1: Weapon = $Weapon1
+@onready var weapon2: Weapon = $Weapon2
 
 func _ready() -> void:
 	gravity_scale = 2.0		
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
-func shoot() -> void:
+func shoot() -> void:	
 	print("shooting...")
-	weapon1Anim.play("ShootAction")
-	weapon2Anim.play("ShootAction")
+	weapon1.shoot()
+	weapon2.shoot()

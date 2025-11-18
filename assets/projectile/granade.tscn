@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7oa4jyudjgw3"]
+
+[ext_resource type="PackedScene" uid="uid://ci3o5wkfuee15" path="res://assets/projectile/granade.glb" id="1_maqql"]
+[ext_resource type="Script" uid="uid://d3wqxy4baddcr" path="res://assets/projectile/Granade.gd" id="1_v02h0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_maqql"]
+radius = 1.0
+
+[node name="Granade" type="RigidBody3D"]
+script = ExtResource("1_v02h0")
+
+[node name="granade" parent="." instance=ExtResource("1_maqql")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_maqql")

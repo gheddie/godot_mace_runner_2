@@ -1,12 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dle2yvrfic5dp"]
+[gd_scene load_steps=3 format=3 uid="uid://dle2yvrfic5dp"]
 
+[ext_resource type="Script" uid="uid://cyxmodnvpfbe8" path="res://assets/weapon/Weapon.gd" id="1_25dmf"]
 [ext_resource type="PackedScene" uid="uid://cmlli36n44vts" path="res://assets/weapon/weapon.glb" id="1_b0dug"]
 
 [node name="Weapon" type="StaticBody3D"]
+script = ExtResource("1_25dmf")
 
 [node name="weapon" parent="." instance=ExtResource("1_b0dug")]
-
-[node name="Cylinder_001" parent="weapon" index="0"]
-transform = Transform3D(0, 3.8778553, 0, -0.8, 0, 0, 0, 0, 0.8, 0.4, 0, 0)
 
 [editable path="weapon"]
