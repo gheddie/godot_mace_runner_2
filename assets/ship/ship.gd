@@ -24,12 +24,11 @@ func _ready() -> void:
 	gravity_scale = 2.0		
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	handle_rotation()
 	
 	var velocity := Vector3.ZERO	
-	var direction := Input.get_vector("turn_left", "turn_right", "", "")
 	if Input.is_action_pressed('move_forward'):
 		velocity.x -= clamp(speed, 0.0, MAX_SPEED)
 	if Input.is_action_pressed('move_backward'):
@@ -55,11 +54,9 @@ func shoot() -> void:
 	weapon2.shoot()
 
 func _input(event: InputEvent) -> void:
-	
 	if event is InputEventMouseMotion:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			mouse_motion = -event.relative * 0.001		
-		
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

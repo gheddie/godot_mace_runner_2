@@ -12,12 +12,6 @@ var bulletInstance: Bullet
 
 @onready var shootingRaycast: RayCast3D = $ShootingRaycast
 
-func _ready() -> void:
-	pass
-
-func _process(delta: float) -> void:
-	pass
-
 func shoot() -> void:
 	if !weaponAnim.is_playing():
 		weaponAnim.play("ShootAction")
