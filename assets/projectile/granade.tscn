@@ -3,13 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://ci3o5wkfuee15" path="res://assets/projectile/granade.glb" id="1_maqql"]
 [ext_resource type="Script" uid="uid://d3wqxy4baddcr" path="res://assets/projectile/Granade.gd" id="1_v02h0"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_maqql"]
-radius = 1.0
+[sub_resource type="SphereShape3D" id="SphereShape3D_v02h0"]
 
 [node name="Granade" type="RigidBody3D"]
 script = ExtResource("1_v02h0")
 
 [node name="granade" parent="." instance=ExtResource("1_maqql")]
+transform = Transform3D(0.059136003, 0, 0, 0, 0.058800004, 0, 0, 0, 0.055999998, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_maqql")
+transform = Transform3D(0.099999964, 0, 0, 0, 0.099999964, 0, 0, 0, 0.099999964, 0, 0, 0)
+shape = SubResource("SphereShape3D_v02h0")
