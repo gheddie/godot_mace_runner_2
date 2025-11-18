@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu20fn85guvwl"]
+[gd_scene load_steps=6 format=3 uid="uid://bu20fn85guvwl"]
 
 [ext_resource type="PackedScene" uid="uid://1plr1se3cupc" path="res://assets/ship/body/ShipBody.tscn" id="1_rgt4d"]
 [ext_resource type="Script" uid="uid://cgvkdrqxluuh8" path="res://assets/ship/ship.gd" id="1_tf6b1"]
 [ext_resource type="PackedScene" uid="uid://08rcab6s8qg8" path="res://assets/ship/thruster/ShipTruster.tscn" id="2_a6jxq"]
+[ext_resource type="PackedScene" uid="uid://dle2yvrfic5dp" path="res://assets/weapon/weapon.tscn" id="4_35tq0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a6jxq"]
 size = Vector3(1, 0.4, 0.8)
@@ -27,3 +28,17 @@ current = true
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000005, 1.4901161e-08, -2.9802322e-08)
 shape = SubResource("BoxShape3D_a6jxq")
+
+[node name="Weapon1" parent="." instance=ExtResource("4_35tq0")]
+transform = Transform3D(-0.05, 0, 4.371139e-09, 0, 0.05, 0, -4.371139e-09, 0, -0.05, 0, 0.15, -0.12500004)
+
+[node name="Cylinder_001" parent="Weapon1/weapon" index="0"]
+transform = Transform3D(0, 3.8778553, 0, -0.8, 0, 0, 0, 0, 0.8, 0.4000001, 0, 0)
+
+[node name="Weapon2" parent="." instance=ExtResource("4_35tq0")]
+transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, 0, 0.15, 0.124999955)
+
+[editable path="Weapon1"]
+[editable path="Weapon1/weapon"]
+[editable path="Weapon2"]
+[editable path="Weapon2/weapon"]
