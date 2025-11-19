@@ -7,15 +7,19 @@ extends BaseMaceElement
 
 @onready var spawner: MeshInstance3D = $fork/Fork/Spawner
 
-var enemyInstance: PackedScene = preload("res://assets/enemy/enemy.tscn")	
+var enemyInstance: PackedScene = preload("res://assets/enemy_hierarchic/inherited/tank/TankEnemy.tscn")	
 
 func _ready() -> void:
 	spawnEnemy()
 	pass
 	
 func spawnEnemy() -> void:
-	var enemy: Enemy = enemyInstance.instantiate()
+	var enemy: TankEnemy = enemyInstance.instantiate()
 	enemy.global_position = spawner.global_position
+	enemy.scale.x = enemy.scale.x/5
+	enemy.scale.y = enemy.scale.y/5
+	enemy.scale.z = enemy.scale.z/5
+	# enemy.rotation_degrees = PlayerAccessInstance.player.rotation_degrees
 	get_tree().get_current_scene().add_child(enemy)
 	
 func getInstanceId() -> String:

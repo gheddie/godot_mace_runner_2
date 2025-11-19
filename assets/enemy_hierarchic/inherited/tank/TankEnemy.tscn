@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnktw8iyv7nyj"]
+[gd_scene load_steps=10 format=3 uid="uid://dnktw8iyv7nyj"]
 
 [ext_resource type="PackedScene" uid="uid://ci6avci4daakq" path="res://assets/enemy_hierarchic/base/AbstractEnemy.tscn" id="1_khlr4"]
 [ext_resource type="Script" uid="uid://b1db4smcekl8e" path="res://assets/enemy_hierarchic/inherited/tank/TankEnemy.gd" id="2_vpbcp"]
@@ -8,35 +8,56 @@
 [ext_resource type="PackedScene" uid="uid://b5xgdp1lugd8i" path="res://assets/enemy_hierarchic/inherited/tank/scene/TankWeapon.tscn" id="6_7lxan"]
 [ext_resource type="PackedScene" uid="uid://635g6bu0pe6o" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_cockpit.glb" id="7_nknaa"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nknaa"]
+size = Vector3(7.8, 4.1, 11)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2k2xs"]
+size = Vector3(8.150001, 4.9, 10.5)
+
 [node name="TankEnemy" instance=ExtResource("1_khlr4")]
+transform = Transform3D(5.9604645e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 5.9604645e-08, 0, 0, 0)
 script = ExtResource("2_vpbcp")
+attack_range = 2.5
+max_hitpoints = 100
 
 [node name="Axis1" parent="." index="0" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.03999981, 2.1799998, -0.10000039)
 
 [node name="Axis2" parent="." index="1" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000536, 0.78, 4.8000007)
 
 [node name="Axis3" parent="." index="2" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.03999982, 0.78, -1.1999987)
 
 [node name="Axis4" parent="." index="3" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000163, 2.08, 2.5)
 
 [node name="Body" parent="." index="4" instance=ExtResource("4_s71h3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+transform = Transform3D(7.86805e-08, 0, -1, 0, 0.59999996, 0, 0.6, 0, 1.3113416e-07, -0.110000536, 1.9799999, 0.3999982)
 
 [node name="Axis5" parent="." index="5" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000193, 0.78, 2.3000002)
 
 [node name="WeaponHolder" parent="." index="6" instance=ExtResource("5_vbhol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.5, 0)
+transform = Transform3D(0.6, 0, 7.1054274e-15, 0, 0.6, 0, 0, 0, 1, -0.21, 2.88, 0.53333235)
 
 [node name="TankWeapon1" parent="." index="7" instance=ExtResource("6_7lxan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, 2.5)
+transform = Transform3D(0.6, 0, 7.1054274e-15, 0, 0.6, 0, 0, 0, 1, -1.6100006, 3.48, 2.2333333)
 
 [node name="TankWeapon2" parent="." index="8" instance=ExtResource("6_7lxan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, -2.5)
+transform = Transform3D(0.6, 0, 7.1054274e-15, 0, 0.6, 0, 0, 0, 1, 1.7900007, 3.48, 2.2333326)
 
 [node name="enemy_mech_cockpit" parent="." index="9" instance=ExtResource("7_nknaa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000476, 2.58, 4.3000007)
+
+[node name="Collider" type="CollisionShape3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09999991, 2.05, 0.19999982)
+shape = SubResource("BoxShape3D_nknaa")
+
+[node name="Area3D" type="Area3D" parent="." index="11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12499943, 2.2, 2.8000002)
+shape = SubResource("BoxShape3D_2k2xs")
+
+[connection signal="body_entered" from="Area3D" to="." method="onBodyEntered"]
