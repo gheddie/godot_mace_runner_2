@@ -12,6 +12,8 @@ const ROTATION_DIFF = 0.05
 
 const STRAFE_FACTOR = 1.5
 
+const MAX_ASCENT = 1.5
+
 var mouse_motion := Vector2.ZERO
 
 @onready var weapon1: Weapon = $Weapon1
@@ -38,13 +40,9 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed('turn_left'):
 		velocity.z += clamp(speed, 0.0, MAX_SPEED) * STRAFE_FACTOR
 		
-	rotation.y = body_rotation
-		
-	apply_impulse(velocity.rotated(Vector3.UP, rotation.y), Vector3.ZERO)
-	
-	if Input.is_action_pressed("thrust_upwards"):
-		apply_force(Vector3(0,25.0,0),Vector3(0,0,0))
-		
+	rotation.y = body_rotation		
+	apply_impulse(velocity.rotated(Vector3.UP, rotation.y), Vector3.ZERO)	
+	thrust_upwards()		
 	if Input.is_action_pressed("shoot"):
 		shoot()
 
@@ -52,6 +50,12 @@ func shoot() -> void:
 	print("shooting...")
 	weapon1.shoot()
 	weapon2.shoot()
+	
+func thrust_upwards() -> void:	
+	print(global_position.y)
+	if global_position.y <= MAX_ASCENT:
+		if Input.is_action_pressed("thrust_upwards"):
+			apply_force(Vector3(0,100.0,0),Vector3(0,0,0))
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

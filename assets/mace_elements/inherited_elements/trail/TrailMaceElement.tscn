@@ -110,33 +110,27 @@ transform = Transform3D(-0.07999998, -8.742277e-09, 6.132539e-09, 0, -0.17320505
 
 [node name="OmniLight1" type="OmniLight3D" parent="Lights" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2, -1.1000001, 0)
-light_color = Color(0, 0, 1, 1)
 light_energy = 10.0
 
 [node name="OmniLight2" type="OmniLight3D" parent="Lights" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6, -1.1000001, 0)
-light_color = Color(0, 0, 1, 1)
 light_energy = 10.0
 
 [node name="DirectionalLight1" type="DirectionalLight3D" parent="Lights" index="2"]
 transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 2, 3, -3)
-light_color = Color(0, 0, 1, 1)
-light_energy = 10.0
+light_energy = 0.0
 
 [node name="DirectionalLight2" type="DirectionalLight3D" parent="Lights" index="3"]
 transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 6, 3, -3)
-light_color = Color(0, 0, 1, 1)
-light_energy = 10.0
+light_energy = 0.0
 
 [node name="DirectionalLight3" type="DirectionalLight3D" parent="Lights" index="4"]
 transform = Transform3D(1, 0, 0, 0, 0.49999988, 0.8660254, 0, -0.8660254, 0.49999988, 2, 3, 3)
-light_color = Color(0, 0, 1, 1)
-light_energy = 10.0
+light_energy = 0.0
 
 [node name="DirectionalLight4" type="DirectionalLight3D" parent="Lights" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.86602545, 0, -0.86602545, 0.5, 6, 3, 3)
-light_color = Color(0, 0, 1, 1)
-light_energy = 10.0
+light_energy = 0.0
 
 [connection signal="body_entered" from="Area" to="." method="onBodyEntered"]
 [connection signal="body_exited" from="Area" to="." method="onBodyExited"]

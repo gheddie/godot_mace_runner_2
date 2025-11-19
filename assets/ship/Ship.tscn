@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bu20fn85guvwl"]
 
 [ext_resource type="PackedScene" uid="uid://1plr1se3cupc" path="res://assets/ship/body/ShipBody.tscn" id="1_rgt4d"]
-[ext_resource type="Script" path="res://assets/ship/Ship.gd" id="1_tf6b1"]
+[ext_resource type="Script" uid="uid://decg5ddv6hyxk" path="res://assets/ship/Ship.gd" id="1_tf6b1"]
 [ext_resource type="PackedScene" uid="uid://08rcab6s8qg8" path="res://assets/ship/thruster/ShipTruster.tscn" id="2_a6jxq"]
 [ext_resource type="PackedScene" uid="uid://dle2yvrfic5dp" path="res://assets/weapon/weapon.tscn" id="4_35tq0"]
 [ext_resource type="Script" uid="uid://c4un5lqrlrnw4" path="res://assets/ship/CrossHair.gd" id="5_j48x4"]
@@ -47,8 +47,15 @@ grow_vertical = 2
 layout_mode = 2
 script = ExtResource("5_j48x4")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35000002, 0)
+[node name="SpotLightLeft" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, -0.8, 0.050000012, 0.45000002)
+light_energy = 4.0
+light_volumetric_fog_energy = 0.0
+
+[node name="SpotLightRight" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, -0.8, 0.050000012, -0.45000002)
+light_energy = 4.0
+light_volumetric_fog_energy = 0.0
 
 [editable path="Weapon1"]
 [editable path="Weapon1/weapon"]

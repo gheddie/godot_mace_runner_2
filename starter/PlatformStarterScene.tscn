@@ -32,3 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.3, 0)
 
 [node name="Starter" parent="." instance=ExtResource("3_rk81i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0.3, 0)
+
+[node name="StarterLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.3, 4.9, 0)
+light_energy = 10.0
