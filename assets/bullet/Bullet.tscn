@@ -12,7 +12,7 @@ emission_energy_multiplier = 5.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xjywo"]
 
-[node name="Bullet" type="Node3D"]
+[node name="Bullet" type="CharacterBody3D"]
 script = ExtResource("1_xjywo")
 
 [node name="Barrel1" type="MeshInstance3D" parent="."]

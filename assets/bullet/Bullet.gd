@@ -1,6 +1,6 @@
 class_name Bullet
 
-extends Node3D
+extends CharacterBody3D
 
 const SPEED = 5000.0
 
