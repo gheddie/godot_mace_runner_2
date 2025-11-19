@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu20fn85guvwl"]
+[gd_scene load_steps=7 format=3 uid="uid://bu20fn85guvwl"]
 
 [ext_resource type="PackedScene" uid="uid://1plr1se3cupc" path="res://assets/ship/body/ShipBody.tscn" id="1_rgt4d"]
 [ext_resource type="Script" uid="uid://cgvkdrqxluuh8" path="res://assets/ship/Ship.gd" id="1_tf6b1"]
 [ext_resource type="PackedScene" uid="uid://08rcab6s8qg8" path="res://assets/ship/thruster/ShipTruster.tscn" id="2_a6jxq"]
 [ext_resource type="PackedScene" uid="uid://dle2yvrfic5dp" path="res://assets/weapon/weapon.tscn" id="4_35tq0"]
+[ext_resource type="Script" uid="uid://c4un5lqrlrnw4" path="res://assets/ship/CrossHair.gd" id="5_j48x4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a6jxq"]
 size = Vector3(1, 0.4, 0.8)
@@ -35,11 +36,16 @@ transform = Transform3D(-0.05, 0, 4.371139e-09, 0, 0.05, 0, -4.371139e-09, 0, -0
 [node name="Weapon2" parent="." instance=ExtResource("4_35tq0")]
 transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, 0, 0.15, 0.124999955)
 
-[node name="RayCastRight" type="RayCast3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, -4.3711393e-07, -10, 0, 10, -4.3711393e-07, 0, 0, 0)
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="RayCastLeft" type="RayCast3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 1.3113416e-06, 10, 0, -10, 1.3113416e-06, 0, 0, 0)
+[node name="CrossHair" type="Control" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("5_j48x4")
 
 [editable path="Weapon1"]
 [editable path="Weapon1/weapon"]
