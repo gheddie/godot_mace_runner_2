@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbpob88xq8t14"]
+[gd_scene load_steps=11 format=3 uid="uid://dbpob88xq8t14"]
 
 [ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_bgc81"]
 [ext_resource type="Script" uid="uid://bfgxhu3cqpdgr" path="res://assets/mace_elements/inherited_elements/trail/TrailMaceElement.gd" id="2_f8r5u"]
 [ext_resource type="PackedScene" uid="uid://rr1hfy4tjsb3" path="res://assets/mace_elements/inherited_elements/trail/trail.glb" id="2_odeht"]
 [ext_resource type="PackedScene" uid="uid://ct3fv2i4rwctg" path="res://assets/door/Door.tscn" id="4_j8rvx"]
+[ext_resource type="PackedScene" uid="uid://c41yh362oxef" path="res://assets/misc/PerforatedMetal.tscn" id="5_1r76h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f8r5u"]
 size = Vector3(8, 0.20124511, 5)
@@ -54,6 +55,56 @@ shape = SubResource("BoxShape3D_66p6m")
 
 [node name="Door" parent="." index="7" instance=ExtResource("4_j8rvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Cover" type="Node3D" parent="." index="8"]
+
+[node name="PerforatedMetal1" parent="Cover" index="0" instance=ExtResource("5_1r76h")]
+transform = Transform3D(0.079999976, 0, 0, 0, 0.19999999, 0, 0, 0, -0.081000015, 1.1000001, 1.6391277e-07, -0.90000004)
+
+[node name="PerforatedMetal2" parent="Cover" index="1" instance=ExtResource("5_1r76h")]
+transform = Transform3D(0.079999976, 0, 0, 0, 0.19999999, 0, 0, 0, -0.081000015, 2.8000002, 1.6391277e-07, -0.90000004)
+
+[node name="PerforatedMetal9" parent="Cover" index="2" instance=ExtResource("5_1r76h")]
+transform = Transform3D(0.07999999, 0, 0, 0, -0.17320506, -0.04050001, 0, -0.099999994, 0.07014807, 1.1000001, 0.5000002, -2.55)
+
+[node name="PerforatedMetal10" parent="Cover" index="3" instance=ExtResource("5_1r76h")]
+transform = Transform3D(0.07999999, 0, 0, 0, -0.17320506, -0.04050001, 0, -0.099999994, 0.07014807, 2.8000002, 0.5000002, -2.55)
+
+[node name="PerforatedMetal3" parent="Cover" index="4" instance=ExtResource("5_1r76h")]
+transform = Transform3D(-0.07999998, 0, -7.0812467e-09, 0, 0.19999999, 0, -6.99382e-09, 0, 0.081000015, 2.8000002, 1.7881393e-07, 0.90000015)
+
+[node name="PerforatedMetal4" parent="Cover" index="5" instance=ExtResource("5_1r76h")]
+transform = Transform3D(-0.07999998, 0, -7.0812467e-09, 0, 0.19999999, 0, -6.99382e-09, 0, 0.081000015, 1.1000001, 1.7881393e-07, 0.90000004)
+
+[node name="PerforatedMetal11" parent="Cover" index="6" instance=ExtResource("5_1r76h")]
+transform = Transform3D(-0.07999998, -8.742277e-09, 6.132539e-09, 0, -0.17320505, -0.04050001, -6.9938206e-09, 0.099999994, -0.070148066, 2.8000002, 0.5000002, 2.55)
+
+[node name="PerforatedMetal12" parent="Cover" index="7" instance=ExtResource("5_1r76h")]
+transform = Transform3D(-0.07999998, -8.742277e-09, 6.132539e-09, 0, -0.17320505, -0.04050001, -6.9938206e-09, 0.099999994, -0.070148066, 1.1000001, 0.5000002, 2.55)
+
+[node name="PerforatedMetal5" parent="Cover" index="8" instance=ExtResource("5_1r76h")]
+transform = Transform3D(0.079999976, 0, 0, 0, 0.19999999, 0, 0, 0, -0.081000015, 5.2, 1.6391277e-07, -0.90000004)
+
+[node name="PerforatedMetal6" parent="Cover" index="9" instance=ExtResource("5_1r76h")]
+transform = Transform3D(0.079999976, 0, 0, 0, 0.19999999, 0, 0, 0, -0.081000015, 6.9, 1.6391277e-07, -0.90000004)
+
+[node name="PerforatedMetal13" parent="Cover" index="10" instance=ExtResource("5_1r76h")]
+transform = Transform3D(0.07999999, 0, 0, 0, -0.17320506, -0.04050001, 0, -0.099999994, 0.07014807, 5.2, 0.5000002, -2.55)
+
+[node name="PerforatedMetal14" parent="Cover" index="11" instance=ExtResource("5_1r76h")]
+transform = Transform3D(0.07999999, 0, 0, 0, -0.17320506, -0.04050001, 0, -0.099999994, 0.07014807, 6.9, 0.5000002, -2.55)
+
+[node name="PerforatedMetal7" parent="Cover" index="12" instance=ExtResource("5_1r76h")]
+transform = Transform3D(-0.07999998, 0, -7.0812467e-09, 0, 0.19999999, 0, -6.99382e-09, 0, 0.081000015, 6.9, 1.7881393e-07, 0.90000015)
+
+[node name="PerforatedMetal8" parent="Cover" index="13" instance=ExtResource("5_1r76h")]
+transform = Transform3D(-0.07999998, 0, -7.0812467e-09, 0, 0.19999999, 0, -6.99382e-09, 0, 0.081000015, 5.2, 1.7881393e-07, 0.90000004)
+
+[node name="PerforatedMetal15" parent="Cover" index="14" instance=ExtResource("5_1r76h")]
+transform = Transform3D(-0.07999998, -8.742277e-09, 6.132539e-09, 0, -0.17320505, -0.04050001, -6.9938206e-09, 0.099999994, -0.070148066, 6.9, 0.5000002, 2.55)
+
+[node name="PerforatedMetal16" parent="Cover" index="15" instance=ExtResource("5_1r76h")]
+transform = Transform3D(-0.07999998, -8.742277e-09, 6.132539e-09, 0, -0.17320505, -0.04050001, -6.9938206e-09, 0.099999994, -0.070148066, 5.2, 0.5000002, 2.55)
 
 [connection signal="body_entered" from="Area" to="." method="onBodyEntered"]
 [connection signal="body_exited" from="Area" to="." method="onBodyExited"]

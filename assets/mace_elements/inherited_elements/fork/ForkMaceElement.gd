@@ -11,6 +11,7 @@ var enemyInstance: PackedScene = preload("res://assets/enemy/enemy.tscn")
 
 func _ready() -> void:
 	spawnEnemy()
+	pass
 	
 func spawnEnemy() -> void:
 	var enemy: Enemy = enemyInstance.instantiate()
