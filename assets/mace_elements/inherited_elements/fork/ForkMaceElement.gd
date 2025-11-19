@@ -5,6 +5,18 @@ extends BaseMaceElement
 @onready var dockLeft: MeshInstance3D = $fork/Fork/DockLeft
 @onready var dockRight: MeshInstance3D = $fork/Fork/DockRight
 
+@onready var spawner: MeshInstance3D = $fork/Fork/Spawner
+
+var enemyInstance: PackedScene = preload("res://assets/enemy/enemy.tscn")	
+
+func _ready() -> void:
+	spawnEnemy()
+	
+func spawnEnemy() -> void:
+	var enemy: Enemy = enemyInstance.instantiate()
+	enemy.global_position = spawner.global_position
+	get_tree().get_current_scene().add_child(enemy)
+	
 func getInstanceId() -> String:
 	return str("Fork@", str(get_instance_id()))
 	
