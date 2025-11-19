@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	var next_position = navigation_agent.get_next_path_position()
+	var next_position: Vector3 = Vector3.ZERO
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
