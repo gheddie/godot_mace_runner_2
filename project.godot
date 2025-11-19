@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 MaceElementFactoryInstance="*res://globals/MaceElementFactory.gd"
 MaceObjectManagerInstance="*res://globals/MaceObjectManager.gd"
+PlayerAccessInstance="*res://globals/PlayerAccess.gd"
 
 [input]
 

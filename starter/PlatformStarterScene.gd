@@ -8,3 +8,4 @@ extends Node3D
 func _ready() -> void:
 	initialTrail.rotationDegrees = 0.0
 	# ship.rotation_degrees.y += 180.0
+	PlayerAccessInstance.player= ship
