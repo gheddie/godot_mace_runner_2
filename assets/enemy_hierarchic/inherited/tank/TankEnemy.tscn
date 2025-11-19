@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://635g6bu0pe6o" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_cockpit.glb" id="7_nknaa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nknaa"]
-size = Vector3(7.8, 4.1, 11)
+size = Vector3(7.8, 4, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2k2xs"]
 size = Vector3(8.150001, 4.9, 10.5)
@@ -51,7 +51,7 @@ transform = Transform3D(0.6, 0, 7.1054274e-15, 0, 0.6, 0, 0, 0, 1, 1.7900007, 3.
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000476, 2.58, 4.3000007)
 
 [node name="Collider" type="CollisionShape3D" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09999991, 2.05, 0.19999982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09999991, 2.1, 2.6999998)
 shape = SubResource("BoxShape3D_nknaa")
 
 [node name="Area3D" type="Area3D" parent="." index="11"]
