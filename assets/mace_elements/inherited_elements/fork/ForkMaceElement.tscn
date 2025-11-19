@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bagwachi4rxh"]
+[gd_scene load_steps=10 format=3 uid="uid://bagwachi4rxh"]
 
 [ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_ijvp6"]
 [ext_resource type="Script" uid="uid://cc6rj84skpc4o" path="res://assets/mace_elements/inherited_elements/fork/ForkMaceElement.gd" id="2_fevai"]
 [ext_resource type="PackedScene" uid="uid://chyu5vlumthtw" path="res://assets/mace_elements/inherited_elements/fork/fork.glb" id="2_s8jsc"]
+[ext_resource type="PackedScene" uid="uid://c41yh362oxef" path="res://assets/misc/PerforatedMetal.tscn" id="4_l0i7n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fevai"]
 size = Vector3(14, 0.2, 14.6)
@@ -46,6 +47,35 @@ shape = SubResource("BoxShape3D_7wpic")
 [node name="BackCollider" type="CollisionShape3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0.8500001, 0)
 shape = SubResource("BoxShape3D_bs0eu")
+
+[node name="Cover" type="Node3D" parent="." index="6"]
+
+[node name="PerforatedMetal1" parent="Cover" index="0" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 2.3, 0, 0)
+
+[node name="PerforatedMetal2" parent="Cover" index="1" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 6.5, 0, 0)
+
+[node name="PerforatedMetal3" parent="Cover" index="2" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 10.7, 0, 0)
+
+[node name="PerforatedMetal4" parent="Cover" index="3" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 5.4, 0, -2.2)
+
+[node name="PerforatedMetal5" parent="Cover" index="4" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 9.6, 0, -2.2)
+
+[node name="PerforatedMetal6" parent="Cover" index="5" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 5.4, 0, 2.2)
+
+[node name="PerforatedMetal7" parent="Cover" index="6" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 9.6, 0, 2.2)
+
+[node name="PerforatedMetal8" parent="Cover" index="7" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 9.599999, 0, -4.4)
+
+[node name="PerforatedMetal9" parent="Cover" index="8" instance=ExtResource("4_l0i7n")]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 0.099999964, 9.599999, 0, 4.4)
 
 [connection signal="body_entered" from="Area" to="." method="onBodyEntered"]
 
