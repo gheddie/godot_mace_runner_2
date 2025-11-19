@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnktw8iyv7nyj"]
+
+[ext_resource type="PackedScene" uid="uid://ci6avci4daakq" path="res://assets/enemy_hierarchic/base/AbstractEnemy.tscn" id="1_khlr4"]
+[ext_resource type="Script" uid="uid://b1db4smcekl8e" path="res://assets/enemy_hierarchic/inherited/tank/TankEnemy.gd" id="2_vpbcp"]
+[ext_resource type="PackedScene" uid="uid://c8aa36iiffj3m" path="res://assets/enemy_hierarchic/inherited/tank/scene/Axis.tscn" id="3_jw2ck"]
+[ext_resource type="PackedScene" uid="uid://8cosugpf6640" path="res://assets/enemy_hierarchic/inherited/tank/scene/Body.tscn" id="4_s71h3"]
+[ext_resource type="PackedScene" uid="uid://c73k01mfirw0h" path="res://assets/enemy_hierarchic/inherited/tank/scene/WeaponHolder.tscn" id="5_vbhol"]
+[ext_resource type="PackedScene" uid="uid://b5xgdp1lugd8i" path="res://assets/enemy_hierarchic/inherited/tank/scene/TankWeapon.tscn" id="6_7lxan"]
+[ext_resource type="PackedScene" uid="uid://635g6bu0pe6o" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_cockpit.glb" id="7_nknaa"]
+
+[node name="TankEnemy" instance=ExtResource("1_khlr4")]
+script = ExtResource("2_vpbcp")
+
+[node name="Axis1" parent="." index="0" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+
+[node name="Axis2" parent="." index="1" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Axis3" parent="." index="2" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Axis4" parent="." index="3" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0)
+
+[node name="Body" parent="." index="4" instance=ExtResource("4_s71h3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+
+[node name="Axis5" parent="." index="5" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="WeaponHolder" parent="." index="6" instance=ExtResource("5_vbhol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.5, 0)
+
+[node name="TankWeapon1" parent="." index="7" instance=ExtResource("6_7lxan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, 2.5)
+
+[node name="TankWeapon2" parent="." index="8" instance=ExtResource("6_7lxan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, -2.5)
+
+[node name="enemy_mech_cockpit" parent="." index="9" instance=ExtResource("7_nknaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://8cosugpf6640"]
+
+[ext_resource type="PackedScene" uid="uid://c0e5won4ayyh2" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_body.glb" id="1_tsllc"]
+
+[node name="Body" type="Node3D"]
+
+[node name="enemy_mech_body" parent="." instance=ExtResource("1_tsllc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -3.5, 0)

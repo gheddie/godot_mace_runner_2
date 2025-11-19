@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci6avci4daakq"]
+
+[ext_resource type="Script" uid="uid://cnev6mh8dwivk" path="res://assets/enemy_hierarchic/base/AbstractEnemy.gd" id="1_gwxhy"]
+
+[node name="AbstractEnemy" type="CharacterBody3D"]
+script = ExtResource("1_gwxhy")

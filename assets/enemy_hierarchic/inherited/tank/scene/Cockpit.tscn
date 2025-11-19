@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3deglsce5ltm"]
+
+[ext_resource type="PackedScene" uid="uid://635g6bu0pe6o" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_cockpit.glb" id="1_iwg7t"]
+
+[node name="Cockpit" type="Node3D"]
+
+[node name="enemy_mech_cockpit" parent="." instance=ExtResource("1_iwg7t")]

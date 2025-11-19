@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8aa36iiffj3m"]
+
+[ext_resource type="PackedScene" uid="uid://dpb1uuhnq4yiw" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_axis.glb" id="1_2ussg"]
+
+[node name="Axis" type="Node3D"]
+
+[node name="enemy_mech_axis" parent="." instance=ExtResource("1_2ussg")]

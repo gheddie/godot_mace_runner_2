@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5xgdp1lugd8i"]
+
+[ext_resource type="PackedScene" uid="uid://bng4f6t68vwa2" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_weapon.glb" id="1_87wtm"]
+
+[node name="TankWeapon" type="Node3D"]
+
+[node name="enemy_mech_weapon" parent="." instance=ExtResource("1_87wtm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 2.7)
