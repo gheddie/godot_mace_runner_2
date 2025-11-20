@@ -83,6 +83,7 @@ func attack() -> void:
 
 func onBodyEntered(body: Node3D) -> void:
 	if body is Bullet:
+		body.onEnemyHit()
 		applyWeaponHit()
 
 func die() -> void:
