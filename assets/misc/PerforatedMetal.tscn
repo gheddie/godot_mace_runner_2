@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c41yh362oxef"]
+[gd_scene load_steps=3 format=3 uid="uid://c41yh362oxef"]
 
 [ext_resource type="PackedScene" uid="uid://c768pifedmbxo" path="res://assets/misc/perforated_metal.glb" id="1_eqo4y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqo4y"]
+size = Vector3(20.340271, 0.095825195, 20.144531)
 
 [node name="PerforatedMetal" type="StaticBody3D"]
 
 [node name="perforated_metal" parent="." instance=ExtResource("1_eqo4y")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02798462, -0.0029907227, -0.041992188)
+shape = SubResource("BoxShape3D_eqo4y")

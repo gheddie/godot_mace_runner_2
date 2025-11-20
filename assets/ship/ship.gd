@@ -12,7 +12,7 @@ const ROTATION_DIFF = 0.05
 
 const STRAFE_FACTOR = 1.5
 
-const MAX_ASCENT = 1.5
+const MAX_ASCENT = 2.5
 
 var mouse_motion := Vector2.ZERO
 
