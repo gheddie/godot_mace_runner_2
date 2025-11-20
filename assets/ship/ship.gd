@@ -47,12 +47,10 @@ func _physics_process(_delta: float) -> void:
 		shoot()
 
 func shoot() -> void:	
-	print("shooting...")
 	weapon1.shoot()
 	weapon2.shoot()
 	
 func thrust_upwards() -> void:	
-	print(global_position.y)
 	if global_position.y <= MAX_ASCENT:
 		if Input.is_action_pressed("thrust_upwards"):
 			apply_force(Vector3(0,100.0,0),Vector3(0,0,0))

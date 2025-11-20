@@ -83,4 +83,7 @@ func attack() -> void:
 
 func onBodyEntered(body: Node3D) -> void:
 	if body is Bullet:
-		pass 
+		applyWeaponHit()
+
+func die() -> void:
+	queue_free()
