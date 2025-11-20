@@ -10,7 +10,7 @@ extends BaseMaceElement
 var enemyInstance: PackedScene = preload("res://assets/enemy_hierarchic/inherited/tank/TankEnemy.tscn")	
 
 func _ready() -> void:
-	spawnEnemy()
+	# spawnEnemy()
 	pass
 	
 func spawnEnemy() -> void:

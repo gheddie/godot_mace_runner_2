@@ -23,7 +23,7 @@ var mouse_motion := Vector2.ZERO
 @onready var castRight: RayCast3D = $RayCastRight
 
 func _ready() -> void:
-	gravity_scale = 2.0		
+	gravity_scale = 1.5		
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _physics_process(_delta: float) -> void:

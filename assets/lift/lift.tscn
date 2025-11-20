@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxdbe80t5hi1t"]
+
+[ext_resource type="PackedScene" uid="uid://c41yh362oxef" path="res://assets/misc/PerforatedMetal.tscn" id="1_2dxq0"]
+[ext_resource type="Script" uid="uid://cimmq5otdb6wu" path="res://assets/lift/Lift.gd" id="1_u2uhe"]
+[ext_resource type="PackedScene" uid="uid://djod2fg5ni3w8" path="res://assets/lift/lift_floor_grid.glb" id="2_5i7wx"]
+[ext_resource type="PackedScene" uid="uid://7k0xwp7oi6l6" path="res://assets/lift/lift_platform.tscn" id="3_wai75"]
+[ext_resource type="Script" uid="uid://djw7egk61v1ka" path="res://assets/lift/LiftPlatform.gd" id="5_jmnc2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmnc2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvcej"]
+
+[node name="Lift" type="Node3D"]
+script = ExtResource("1_u2uhe")
+
+[node name="Floor1" type="Node3D" parent="."]
+
+[node name="Wall1" parent="Floor1" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -10, 10, 0)
+
+[node name="Wall2" parent="Floor1" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 10, 10)
+
+[node name="Wall3" parent="Floor1" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 10, 10, 0)
+
+[node name="lift_floor_grid" parent="Floor1" instance=ExtResource("2_5i7wx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Floor2" type="Node3D" parent="."]
+
+[node name="Wall1" parent="Floor2" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -10, 32, 0)
+
+[node name="Wall2" parent="Floor2" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 32, 10)
+
+[node name="Wall3" parent="Floor2" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 10, 32, 0)
+
+[node name="lift_floor_grid" parent="Floor2" instance=ExtResource("2_5i7wx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 22, 0)
+
+[node name="Floor3" type="Node3D" parent="."]
+
+[node name="Wall1" parent="Floor3" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -10, 54, 0)
+
+[node name="Wall2" parent="Floor3" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 54, 10)
+
+[node name="Wall3" parent="Floor3" instance=ExtResource("1_2dxq0")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 10, 54, 0)
+
+[node name="lift_floor_grid" parent="Floor3" instance=ExtResource("2_5i7wx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 44, 0)
+
+[node name="LiftPlatform" parent="." instance=ExtResource("3_wai75")]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 4, 0)
+script = ExtResource("5_jmnc2")
+
+[node name="LowerEntry" type="Area3D" parent="LiftPlatform"]
+transform = Transform3D(1.2499998, 0, 0, 0, 1, 0, 0, 0, 1.2499998, 0, -2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LiftPlatform/LowerEntry"]
+shape = SubResource("BoxShape3D_jmnc2")
+
+[node name="UpperEntry" type="Area3D" parent="LiftPlatform"]
+transform = Transform3D(1.2499999, 0, 0, 0, 1, 0, 0, 0, 1.2499999, 0, 40, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LiftPlatform/UpperEntry"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 18, 0)
+shape = SubResource("BoxShape3D_tvcej")

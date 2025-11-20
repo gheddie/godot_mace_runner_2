@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://7k0xwp7oi6l6"]
+
+[ext_resource type="PackedScene" uid="uid://bkrcjsxxmuy6l" path="res://assets/lift/lift_platform.glb" id="1_mdpwl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mdpwl"]
+size = Vector3(20, 1, 20)
+
+[node name="LiftPlatform" type="StaticBody3D"]
+
+[node name="lift_platform" parent="." instance=ExtResource("1_mdpwl")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mdpwl")

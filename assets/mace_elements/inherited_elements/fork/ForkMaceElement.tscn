@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bagwachi4rxh"]
+[gd_scene load_steps=11 format=3 uid="uid://bagwachi4rxh"]
 
 [ext_resource type="PackedScene" uid="uid://dikb5sjj2ktsv" path="res://assets/mace_elements/base/BaseMaceElement.tscn" id="1_ijvp6"]
 [ext_resource type="Script" uid="uid://cc6rj84skpc4o" path="res://assets/mace_elements/inherited_elements/fork/ForkMaceElement.gd" id="2_fevai"]
 [ext_resource type="PackedScene" uid="uid://chyu5vlumthtw" path="res://assets/mace_elements/inherited_elements/fork/fork.glb" id="2_s8jsc"]
 [ext_resource type="PackedScene" uid="uid://c41yh362oxef" path="res://assets/misc/PerforatedMetal.tscn" id="4_l0i7n"]
+[ext_resource type="PackedScene" uid="uid://bxdbe80t5hi1t" path="res://assets/lift/lift.tscn" id="5_o7ns2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fevai"]
 size = Vector3(14, 0.2, 14.6)
@@ -110,6 +111,9 @@ transform = Transform3D(0, -0.9999998, 4.3711363e-09, 1.4457e-17, -4.3711378e-08
 
 [node name="PerforatedMetal2" parent="Cover/Walls/WallFront" index="1" instance=ExtResource("4_l0i7n")]
 transform = Transform3D(0, -0.9999998, 4.3711363e-09, 1.4457e-17, -4.3711378e-08, -0.09999995, 0.19999997, -8.940697e-08, 7.771561e-16, 12.790352, 1, 2.0405796)
+
+[node name="Lift" parent="." index="7" instance=ExtResource("5_o7ns2")]
+transform = Transform3D(-7.868051e-09, 0, 0.18000002, 0, 0.3, 0, -0.18000002, 0, -7.868051e-09, 11, 0.5, 0.099998474)
 
 [connection signal="body_entered" from="Area" to="." method="onBodyEntered"]
 
