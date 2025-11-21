@@ -20,44 +20,72 @@ script = ExtResource("2_vpbcp")
 attack_range = 2.5
 max_hitpoints = 100
 
-[node name="Axis1" parent="." index="0" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.03999981, 2.1799998, -0.10000039)
-
-[node name="Axis2" parent="." index="1" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000536, 0.78, 4.8000007)
-
-[node name="Axis3" parent="." index="2" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.03999982, 0.78, -1.1999987)
-
-[node name="Axis4" parent="." index="3" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000163, 2.08, 2.5)
-
-[node name="Body" parent="." index="4" instance=ExtResource("4_s71h3")]
+[node name="Body" parent="." index="0" instance=ExtResource("4_s71h3")]
 transform = Transform3D(7.86805e-08, 0, -1, 0, 0.59999996, 0, 0.6, 0, 1.3113416e-07, -0.110000536, 1.9799999, 0.3999982)
 
-[node name="Axis5" parent="." index="5" instance=ExtResource("3_jw2ck")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000193, 0.78, 2.3000002)
-
-[node name="WeaponHolder" parent="." index="6" instance=ExtResource("5_vbhol")]
+[node name="WeaponHolder" parent="." index="1" instance=ExtResource("5_vbhol")]
 transform = Transform3D(0.6, 0, 7.1054274e-15, 0, 0.6, 0, 0, 0, 1, -0.21, 2.88, 0.53333235)
 
-[node name="TankWeapon1" parent="." index="7" instance=ExtResource("6_7lxan")]
+[node name="TankWeapon1" parent="." index="2" instance=ExtResource("6_7lxan")]
 transform = Transform3D(0.6, 0, 7.1054274e-15, 0, 0.6, 0, 0, 0, 1, -1.6100006, 3.48, 2.2333333)
 
-[node name="TankWeapon2" parent="." index="8" instance=ExtResource("6_7lxan")]
+[node name="TankWeapon2" parent="." index="3" instance=ExtResource("6_7lxan")]
 transform = Transform3D(0.6, 0, 7.1054274e-15, 0, 0.6, 0, 0, 0, 1, 1.7900007, 3.48, 2.2333326)
 
-[node name="enemy_mech_cockpit" parent="." index="9" instance=ExtResource("7_nknaa")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0.040000476, 2.58, 4.3000007)
+[node name="enemy_mech_cockpit" parent="." index="4" instance=ExtResource("7_nknaa")]
+transform = Transform3D(0.36, 0, 0, 0, 0.6, 0, 0, 0, 1, -0.15999953, 2.58, 4.3000007)
 
-[node name="Collider" type="CollisionShape3D" parent="." index="10"]
+[node name="Collider" type="CollisionShape3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09999991, 2.1, 2.6999998)
 shape = SubResource("BoxShape3D_nknaa")
 
-[node name="Area3D" type="Area3D" parent="." index="11"]
+[node name="Area3D" type="Area3D" parent="." index="6"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12499943, 2.2, 2.8000002)
 shape = SubResource("BoxShape3D_2k2xs")
 
+[node name="Axis" type="Node3D" parent="." index="7"]
+
+[node name="Axis1" parent="Axis" index="0" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(0.59999996, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.040000536, 0.78, 4.8000007)
+
+[node name="MainAxis" parent="Axis/Axis1/enemy_mech_axis" index="0"]
+transform = Transform3D(-6.516826e-08, -1, 1.7484552e-08, 0, -4.371139e-08, -0.39999992, 0.39999992, -1.6292068e-07, 2.8485953e-15, 0, 0, 0)
+
+[node name="Axis2" parent="Axis" index="1" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(0.59999996, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.040000297, 0.78, 2.8000007)
+
+[node name="enemy_mech_axis" parent="Axis/Axis2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4505806e-08, 0, 0.666667)
+
+[node name="MainAxis" parent="Axis/Axis2/enemy_mech_axis" index="0"]
+transform = Transform3D(-1.7484552e-08, -1, 1.7484552e-08, 0, -4.371139e-08, -0.39999992, 0.39999992, -4.371139e-08, 7.64274e-16, 0, 0, 0)
+
+[node name="Axis3" parent="Axis" index="2" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(0.59999996, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.03999982, 0.78, -1.1999993)
+
+[node name="enemy_mech_axis" parent="Axis/Axis3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7567148e-07, 2.333333, 2.3333333)
+
+[node name="Axis4" parent="Axis" index="3" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(0.59999996, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.040000103, 0.78, 1.2000006)
+
+[node name="enemy_mech_axis" parent="Axis/Axis4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4505806e-08, 0, 0.666667)
+
+[node name="Axis5" parent="Axis" index="4" instance=ExtResource("3_jw2ck")]
+transform = Transform3D(0.59999996, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.03999982, 0.78, -1.1999993)
+
+[node name="enemy_mech_axis" parent="Axis/Axis5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4505806e-08, 0, 0.666667)
+
 [connection signal="body_entered" from="Area3D" to="." method="onBodyEntered"]
+
+[editable path="Axis/Axis1"]
+[editable path="Axis/Axis1/enemy_mech_axis"]
+[editable path="Axis/Axis2"]
+[editable path="Axis/Axis2/enemy_mech_axis"]
+[editable path="Axis/Axis3"]
+[editable path="Axis/Axis4"]
+[editable path="Axis/Axis5"]

@@ -5,8 +5,11 @@ extends AbstractEnemy
 const SPEED = 2.0
 const JUMP_VELOCITY = 4.5
 
-@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var playerAxis1 : AnimationPlayer = $Axis/Axis1/enemy_mech_axis/AnimationPlayer
+@onready var playerAxis2 : AnimationPlayer = $Axis/Axis2/enemy_mech_axis/AnimationPlayer
+@onready var playerAxis3 : AnimationPlayer = $Axis/Axis3/enemy_mech_axis/AnimationPlayer
+@onready var playerAxis4 : AnimationPlayer = $Axis/Axis4/enemy_mech_axis/AnimationPlayer
+@onready var playerAxis5 : AnimationPlayer = $Axis/Axis5/enemy_mech_axis/AnimationPlayer
 
 var provoked := false
 var aggro_range := 12.0
@@ -20,20 +23,37 @@ var hitpoints: int = max_hitpoints:
 		hitpoints = value
 		if hitpoints <= 0:
 			queue_free()
-		provoked = true			
+		provoked = true
 
 func _ready() -> void:	
 	"""
 	player = get_tree().get_first_node_in_group("player")
 	"""
-	pass
+	playerAxis1.play("RollAction")
+	playerAxis2.play("RollAction")
+	playerAxis3.play("RollAction")
+	playerAxis4.play("RollAction")
+	playerAxis5.play("RollAction")
 	
 func _process(delta: float) -> void:
 	"""
 	if provoked:
 		navigation_agent.target_position = player.global_position
-		"""
-	pass		
+		"""		
+	watchAnimations()
+	
+func watchAnimations() -> void:
+	if !playerAxis1.is_playing():
+		playerAxis1.play("RollAction")
+	if !playerAxis2.is_playing():
+		playerAxis2.play("RollAction")
+	if !playerAxis3.is_playing():
+		playerAxis3.play("RollAction")
+	if !playerAxis4.is_playing():
+		playerAxis4.play("RollAction")
+	if !playerAxis5.is_playing():
+		playerAxis5.play("RollAction")
+	pass
 
 func _physics_process(delta: float) -> void:
 	
