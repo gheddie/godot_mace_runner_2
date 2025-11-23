@@ -11,6 +11,8 @@ const JUMP_VELOCITY = 4.5
 @onready var playerAxis4 : AnimationPlayer = $Axis/Axis4/enemy_mech_axis/AnimationPlayer
 @onready var playerAxis5 : AnimationPlayer = $Axis/Axis5/enemy_mech_axis/AnimationPlayer
 
+@onready var animWatcher : AnimationWatcher = AnimationWatcher.new()
+
 var provoked := false
 var aggro_range := 12.0
 
@@ -26,35 +28,21 @@ var hitpoints: int = max_hitpoints:
 		provoked = true
 
 func _ready() -> void:	
-	"""
-	player = get_tree().get_first_node_in_group("player")
-	"""
-	playerAxis1.play("RollAction")
-	playerAxis2.play("RollAction")
-	playerAxis3.play("RollAction")
-	playerAxis4.play("RollAction")
-	playerAxis5.play("RollAction")
+	
+	animWatcher.registerAnimation(playerAxis1, "RollAction")
+	animWatcher.registerAnimation(playerAxis2, "RollAction")
+	animWatcher.registerAnimation(playerAxis3, "RollAction")
+	animWatcher.registerAnimation(playerAxis4, "RollAction")
+	animWatcher.registerAnimation(playerAxis5, "RollAction")
 	
 func _process(delta: float) -> void:
 	"""
 	if provoked:
 		navigation_agent.target_position = player.global_position
 		"""		
-	watchAnimations()
-	
-func watchAnimations() -> void:
-	if !playerAxis1.is_playing():
-		playerAxis1.play("RollAction")
-	if !playerAxis2.is_playing():
-		playerAxis2.play("RollAction")
-	if !playerAxis3.is_playing():
-		playerAxis3.play("RollAction")
-	if !playerAxis4.is_playing():
-		playerAxis4.play("RollAction")
-	if !playerAxis5.is_playing():
-		playerAxis5.play("RollAction")
+	animWatcher.tick()
 	pass
-
+	
 func _physics_process(delta: float) -> void:
 	
 	# TODO hier muss die Position des Schiffs hin...
