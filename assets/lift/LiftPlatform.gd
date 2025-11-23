@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func movePlatform(_delta: float) -> void:
+func move(_delta: float) -> void:
 	if rising:
 		global_position.y += SPEED * _delta
 	else:

@@ -6,12 +6,25 @@
 [ext_resource type="PackedScene" uid="uid://7k0xwp7oi6l6" path="res://assets/lift/lift_platform.tscn" id="3_wai75"]
 [ext_resource type="Script" uid="uid://djw7egk61v1ka" path="res://assets/lift/LiftPlatform.gd" id="5_jmnc2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jmnc2"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvcej"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmnc2"]
 
 [node name="Lift" type="Node3D"]
 script = ExtResource("1_u2uhe")
+
+[node name="UpperEntry" type="Area3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 44, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpperEntry"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 18, 0)
+shape = SubResource("BoxShape3D_tvcej")
+
+[node name="LowerEntry" type="Area3D" parent="."]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0, 2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LowerEntry"]
+shape = SubResource("BoxShape3D_jmnc2")
 
 [node name="Floor1" type="Node3D" parent="."]
 
@@ -58,16 +71,3 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4
 [node name="LiftPlatform" parent="." instance=ExtResource("3_wai75")]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 4, 0)
 script = ExtResource("5_jmnc2")
-
-[node name="LowerEntry" type="Area3D" parent="LiftPlatform"]
-transform = Transform3D(1.2499998, 0, 0, 0, 1, 0, 0, 0, 1.2499998, 0, -2, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LiftPlatform/LowerEntry"]
-shape = SubResource("BoxShape3D_jmnc2")
-
-[node name="UpperEntry" type="Area3D" parent="LiftPlatform"]
-transform = Transform3D(1.2499999, 0, 0, 0, 1, 0, 0, 0, 1.2499999, 0, 40, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LiftPlatform/UpperEntry"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 18, 0)
-shape = SubResource("BoxShape3D_tvcej")
