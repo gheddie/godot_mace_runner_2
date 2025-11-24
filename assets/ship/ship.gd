@@ -14,6 +14,7 @@ const STRAFE_FACTOR = 1.5
 
 const CAMERA_SWING_FACTOR = 5.0
 const MAX_CAMERA_SWING_DEGREES = 30.0
+const CAMERA_SWINGBACK_FACTOR = 250.0
 
 const MAX_ASCENT = 2.5
 
@@ -87,4 +88,23 @@ func handleLookAround(motion: Vector2, _delta: float) -> void:
 		weaponHolder.rotation_degrees.y += mouse_motion.x * _delta * 1000.0 * CAMERA_SWING_FACTOR
 	else:
 		# swing weapon holder (camera rotation) back to ZERO
-		weaponHolder.rotation_degrees = Vector3(0.0, 270.0, 0.0)
+		swingBackCamera(_delta)
+		
+func swingBackCamera(_delta: float) -> void:
+	
+	# TODO -> somehting like lerp(...)?
+	
+	if weaponHolder.rotation_degrees.x > 0:
+		weaponHolder.rotation_degrees.x -= 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
+	if weaponHolder.rotation_degrees.x < 0:
+		weaponHolder.rotation_degrees.x += 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
+		
+	if weaponHolder.rotation_degrees.y > 270:
+		weaponHolder.rotation_degrees.y -= 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
+	if weaponHolder.rotation_degrees.y < 270:
+		weaponHolder.rotation_degrees.y += 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
+		
+	if weaponHolder.rotation_degrees.z > 0:
+		weaponHolder.rotation_degrees.z -= 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
+	if weaponHolder.rotation_degrees.z < 0:
+		weaponHolder.rotation_degrees.z += 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
