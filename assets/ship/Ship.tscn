@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu20fn85guvwl"]
+[gd_scene load_steps=8 format=3 uid="uid://bu20fn85guvwl"]
 
 [ext_resource type="PackedScene" uid="uid://1plr1se3cupc" path="res://assets/ship/body/ShipBody.tscn" id="1_rgt4d"]
-[ext_resource type="Script" uid="uid://decg5ddv6hyxk" path="res://assets/ship/Ship.gd" id="1_tf6b1"]
+[ext_resource type="Script" uid="uid://decg5ddv6hyxk" path="res://assets/ship/ship.gd" id="1_tf6b1"]
 [ext_resource type="PackedScene" uid="uid://08rcab6s8qg8" path="res://assets/ship/thruster/ShipTruster.tscn" id="2_a6jxq"]
 [ext_resource type="PackedScene" uid="uid://dle2yvrfic5dp" path="res://assets/weapon/weapon.tscn" id="4_35tq0"]
 [ext_resource type="Script" uid="uid://c4un5lqrlrnw4" path="res://assets/ship/CrossHair.gd" id="5_j48x4"]
+[ext_resource type="PackedScene" uid="uid://c73k01mfirw0h" path="res://assets/enemy_hierarchic/inherited/tank/scene/WeaponHolder.tscn" id="6_awu8b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a6jxq"]
 size = Vector3(1, 0.4, 0.8)
@@ -22,19 +23,9 @@ transform = Transform3D(0.11199999, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 0.055999994,
 [node name="Truster2" parent="." instance=ExtResource("2_a6jxq")]
 transform = Transform3D(0.11199999, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 0.055999994, 0, -0.20999998)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.222196e-08, -0.25881907, 0.9659258, -1.131334e-08, 0.9659259, 0.25881907, -1, 8.881784e-16, -4.371139e-08, 1, 0.5, 0)
-current = true
-
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000005, 1.4901161e-08, -2.9802322e-08)
 shape = SubResource("BoxShape3D_a6jxq")
-
-[node name="Weapon1" parent="." instance=ExtResource("4_35tq0")]
-transform = Transform3D(-0.05, 0, 4.371139e-09, 0, 0.05, 0, -4.371139e-09, 0, -0.05, 0, 0.15, -0.12500004)
-
-[node name="Weapon2" parent="." instance=ExtResource("4_35tq0")]
-transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, 0, 0.15, 0.124999955)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
@@ -57,7 +48,20 @@ transform = Transform3D(-4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.3
 light_energy = 4.0
 light_volumetric_fog_energy = 0.0
 
-[editable path="Weapon1"]
-[editable path="Weapon1/weapon"]
-[editable path="Weapon2"]
-[editable path="Weapon2/weapon"]
+[node name="WeaponHolder" parent="." instance=ExtResource("6_awu8b")]
+transform = Transform3D(-1.7484552e-09, 0, -0.06, 0, 0.072, 0, 0.03999999, 0, -2.6226832e-09, 0.05, 0.12500015, 0)
+
+[node name="Weapon1" parent="WeaponHolder" instance=ExtResource("4_35tq0")]
+transform = Transform3D(-5.4639248e-08, 0, -1.2500002, 0, 0.6944444, 0, 0.8333333, 0, -3.642616e-08, -3.1250017, 0.34722018, 0.83333343)
+
+[node name="Weapon2" parent="WeaponHolder" instance=ExtResource("4_35tq0")]
+transform = Transform3D(1.6391773e-07, 0, -1.2500002, 0, 0.6944444, 0, 0.8333333, 0, 1.09278474e-07, 3.1249993, 0.34722018, 0.8333332)
+
+[node name="Camera3D" type="Camera3D" parent="WeaponHolder"]
+transform = Transform3D(-25.000004, 2.8283358e-07, -2.1483338e-06, -1.571297e-07, 13.415637, 3.5947092, 1.4322225e-06, 4.313651, -16.098763, -1.0381456e-06, 5.208331, -15.833333)
+current = true
+
+[editable path="WeaponHolder/Weapon1"]
+[editable path="WeaponHolder/Weapon1/weapon"]
+[editable path="WeaponHolder/Weapon2"]
+[editable path="WeaponHolder/Weapon2/weapon"]

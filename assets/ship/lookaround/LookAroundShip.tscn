@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dvifovk07pjja"]
+
+[node name="LookAroundShip" type="RigidBody3D"]

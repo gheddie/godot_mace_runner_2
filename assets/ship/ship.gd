@@ -12,15 +12,20 @@ const ROTATION_DIFF = 0.05
 
 const STRAFE_FACTOR = 1.5
 
+const CAMERA_SWING_FACTOR = 5.0
+const MAX_CAMERA_SWING_DEGREES = 30.0
+
 const MAX_ASCENT = 2.5
 
 var mouse_motion := Vector2.ZERO
 
-@onready var weapon1: Weapon = $Weapon1
-@onready var weapon2: Weapon = $Weapon2
+@onready var weapon1: Weapon = $WeaponHolder/Weapon1
+@onready var weapon2: Weapon = $WeaponHolder/Weapon2
 
 @onready var castLeft: RayCast3D = $RayCastLeft
 @onready var castRight: RayCast3D = $RayCastRight
+
+@onready var weaponHolder: Node3D = $WeaponHolder
 
 func _ready() -> void:
 	gravity_scale = 1.5		
@@ -28,7 +33,8 @@ func _ready() -> void:
 	
 func _physics_process(_delta: float) -> void:
 	
-	handle_rotation()
+	handle_rotation(mouse_motion)
+	handleLookAround(mouse_motion, _delta)
 	
 	var velocity := Vector3.ZERO	
 	if Input.is_action_pressed('move_forward'):
@@ -45,6 +51,9 @@ func _physics_process(_delta: float) -> void:
 	thrust_upwards()		
 	if Input.is_action_pressed("shoot"):
 		shoot()
+		
+	# reset mouse motion
+	mouse_motion = Vector2.ZERO
 
 func shoot() -> void:	
 	weapon1.shoot()
@@ -62,6 +71,20 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-func handle_rotation() -> void:
-	body_rotation += mouse_motion.x
-	mouse_motion = Vector2.ZERO
+func handle_rotation(motion: Vector2) -> void:
+	if !Input.is_action_pressed("look_around"):
+		body_rotation += motion.x	
+
+func handleLookAround(motion: Vector2, _delta: float) -> void:
+	if Input.is_action_pressed("look_around"):				
+		# x
+		var absX = abs(weaponHolder.rotation_degrees.x)
+		print(absX)
+		weaponHolder.rotation_degrees.x -= mouse_motion.y * _delta * 1000.0 * CAMERA_SWING_FACTOR
+		# y
+		var absY = abs(weaponHolder.rotation_degrees.y)
+		print(absY)
+		weaponHolder.rotation_degrees.y += mouse_motion.x * _delta * 1000.0 * CAMERA_SWING_FACTOR
+	else:
+		# swing weapon holder (camera rotation) back to ZERO
+		weaponHolder.rotation_degrees = Vector3(0.0, 270.0, 0.0)

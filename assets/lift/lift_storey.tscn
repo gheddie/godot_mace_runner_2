@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b48kb8rxv63pk"]
+
+[ext_resource type="PackedScene" uid="uid://djod2fg5ni3w8" path="res://assets/lift/lift_floor_grid.glb" id="1_7lvwg"]
+
+[node name="LiftStorey" type="Node3D"]
+
+[node name="lift_floor_grid" parent="." instance=ExtResource("1_7lvwg")]
