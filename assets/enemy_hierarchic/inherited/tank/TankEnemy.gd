@@ -14,7 +14,7 @@ const JUMP_VELOCITY = 4.5
 @onready var animWatcher : AnimationWatcher = AnimationWatcher.new()
 
 var provoked := false
-var aggro_range := 12.0
+var KEEP_DISTANCE := 25.0
 
 @export var attack_range : float = 2.5
 
@@ -53,25 +53,15 @@ func _physics_process(delta: float) -> void:
 		
 	var direction = global_position.direction_to(next_position)
 	
-	"""
-	var distance = global_position.distance_to(player.global_position)
-	if distance <= aggro_range:
-		provoked = true
-		"""
-		
-	"""
-	if provoked:
-		if distance <= attack_range:
-			animation_player.play("attack")
-			"""
-		
+	var distance = global_position.distance_to(PlayerAccessInstance.player.global_position)
 	if direction:
 		look_at_target(direction)
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		if distance <= KEEP_DISTANCE:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 	move_and_slide()
 
