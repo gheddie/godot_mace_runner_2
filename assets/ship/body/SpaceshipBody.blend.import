@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://mb0mnfpuueey"
-path="res://.godot/imported/SpaceshipBody.blend-be126d8b9d2449ad99b28fc6017d68d7.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/ship/body/SpaceshipBody.blend"
-dest_files=["res://.godot/imported/SpaceshipBody.blend-be126d8b9d2449ad99b28fc6017d68d7.scn"]
 
 [params]
 
