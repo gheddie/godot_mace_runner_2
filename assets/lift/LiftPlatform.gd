@@ -4,6 +4,8 @@ extends StaticBody3D
 
 var rising: bool
 
+@onready var trailSpawner: MeshInstance3D = $lift_platform/TrailSpawner
+
 const SPEED: int = 1.0
 
 func _ready() -> void:

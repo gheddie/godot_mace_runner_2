@@ -7,11 +7,26 @@ extends BaseMaceElement
 
 @onready var spawner: MeshInstance3D = $fork/Fork/Spawner
 
+@onready var lift: Lift = $Lift
+
 var enemyInstance: PackedScene = preload("res://assets/enemy_hierarchic/inherited/tank/TankEnemy.tscn")	
 
 func _ready() -> void:
 	# spawnEnemy()
+	rotateLift()
+	lift.parentFork = self
 	pass
+	
+func rotateLift() -> void:
+	var liftRotation: float
+	var rand = randi_range(0,2)
+	if rand == 1:
+		liftRotation = 0.0
+	elif  rand == 2:
+		liftRotation = 90.0
+	else:
+		liftRotation = 180.0
+	lift.rotation_degrees.y = liftRotation
 	
 func spawnEnemy() -> void:
 	var enemy: TankEnemy = enemyInstance.instantiate()

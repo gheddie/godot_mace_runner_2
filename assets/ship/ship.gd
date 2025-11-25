@@ -16,7 +16,9 @@ const CAMERA_SWING_FACTOR = 5.0
 const MAX_CAMERA_SWING_DEGREES = 20.0
 const CAMERA_SWINGBACK_FACTOR = 250.0
 
-const MAX_ASCENT = 2.5
+const MAX_ASCENT = 1000.0
+
+const THRUST_UP_FORCE = 25.0
 
 var mouse_motion := Vector2.ZERO
 
@@ -63,7 +65,7 @@ func shoot() -> void:
 func thrust_upwards() -> void:	
 	if global_position.y <= MAX_ASCENT:
 		if Input.is_action_pressed("thrust_upwards"):
-			apply_force(Vector3(0,100.0,0),Vector3(0,0,0))
+			apply_force(Vector3(0,THRUST_UP_FORCE,0),Vector3(0,0,0))
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

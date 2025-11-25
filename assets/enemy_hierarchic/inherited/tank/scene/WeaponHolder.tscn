@@ -3,5 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://s3rvnlf6qxy0" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_weaponholder.glb" id="1_y6n61"]
 
 [node name="WeaponHolder" type="Node3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="enemy_mech_weaponholder" parent="." instance=ExtResource("1_y6n61")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 0)
