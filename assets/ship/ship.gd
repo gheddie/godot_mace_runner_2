@@ -13,7 +13,7 @@ const ROTATION_DIFF = 0.05
 const STRAFE_FACTOR = 1.5
 
 const CAMERA_SWING_FACTOR = 5.0
-const MAX_CAMERA_SWING_DEGREES = 30.0
+const MAX_CAMERA_SWING_DEGREES = 20.0
 const CAMERA_SWINGBACK_FACTOR = 250.0
 
 const MAX_ASCENT = 2.5
@@ -78,14 +78,25 @@ func handle_rotation(motion: Vector2) -> void:
 
 func handleLookAround(motion: Vector2, _delta: float) -> void:
 	if Input.is_action_pressed("look_around"):				
-		# x
+		
 		var absX = abs(weaponHolder.rotation_degrees.x)
-		print(absX)
-		weaponHolder.rotation_degrees.x -= mouse_motion.y * _delta * 1000.0 * CAMERA_SWING_FACTOR
-		# y
+		print(str("absX -> ", absX))
 		var absY = abs(weaponHolder.rotation_degrees.y)
-		print(absY)
+		# print(absY)
+		
+		# x
+		if weaponHolder.rotation_degrees.x >= -MAX_CAMERA_SWING_DEGREES and weaponHolder.rotation_degrees.x <= MAX_CAMERA_SWING_DEGREES:
+			weaponHolder.rotation_degrees.x -= mouse_motion.y * _delta * 1000.0 * CAMERA_SWING_FACTOR			
+			print(str("weaponHolder.rotation_degrees.x -> ", weaponHolder.rotation_degrees.x))
+		else:
+			if weaponHolder.rotation_degrees.x >= 0.0:
+				weaponHolder.rotation_degrees.x = MAX_CAMERA_SWING_DEGREES
+			else:
+				weaponHolder.rotation_degrees.x = -MAX_CAMERA_SWING_DEGREES
+			
+		# y				
 		weaponHolder.rotation_degrees.y += mouse_motion.x * _delta * 1000.0 * CAMERA_SWING_FACTOR
+		
 	else:
 		# swing weapon holder (camera rotation) back to ZERO
 		swingBackCamera(_delta)
