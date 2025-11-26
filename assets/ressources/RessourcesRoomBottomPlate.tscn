@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dedii217e5s4p"]
+
+[ext_resource type="PackedScene" uid="uid://c41yh362oxef" path="res://assets/misc/PerforatedMetal.tscn" id="1_vlpsq"]
+[ext_resource type="Script" uid="uid://dso2qgm2lxkh0" path="res://assets/ressources/RessourcesRoomBottomPlate.gd" id="2_6ipa8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vlpsq"]
+
+[node name="RessourcesRoomBottomPlate" instance=ExtResource("1_vlpsq")]
+script = ExtResource("2_6ipa8")
+
+[node name="InheritanceMarker" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("BoxMesh_vlpsq")
+
+[node name="EdgeLights" type="Node3D" parent="." index="3"]
+
+[node name="Light1" type="OmniLight3D" parent="EdgeLights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.9418573, -8)
+
+[node name="Light2" type="OmniLight3D" parent="EdgeLights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.9418573, -8)
+
+[node name="Light3" type="OmniLight3D" parent="EdgeLights" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.9418573, 8)
+
+[node name="Light4" type="OmniLight3D" parent="EdgeLights" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.9418573, 8)

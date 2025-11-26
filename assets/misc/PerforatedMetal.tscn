@@ -7,7 +7,8 @@ size = Vector3(20.340271, 0.095825195, 20.144531)
 
 [node name="PerforatedMetal" type="StaticBody3D"]
 
-[node name="perforated_metal" parent="." instance=ExtResource("1_eqo4y")]
+[node name="Grid" parent="." instance=ExtResource("1_eqo4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023287773, -0.017169952, -0.0076789856)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02798462, -0.0029907227, -0.041992188)
