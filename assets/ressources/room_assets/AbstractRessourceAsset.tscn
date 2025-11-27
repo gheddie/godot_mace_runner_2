@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b260sop23mryp"]
+
+[ext_resource type="Script" uid="uid://c1cc4syc1fgmc" path="res://assets/ressources/room_assets/AbstractRessourceAsset.gd" id="1_iodfv"]
+
+[node name="AbstractRessourceAsset" type="StaticBody3D"]
+script = ExtResource("1_iodfv")

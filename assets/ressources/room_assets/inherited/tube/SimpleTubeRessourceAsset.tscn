@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi7hqsobeh37k"]
+
+[ext_resource type="PackedScene" uid="uid://b260sop23mryp" path="res://assets/ressources/room_assets/AbstractRessourceAsset.tscn" id="1_mldje"]
+[ext_resource type="Script" uid="uid://0ai7so406rgo" path="res://assets/ressources/room_assets/inherited/tube/SimpleTubeRessourceAsset.gd" id="2_6l66t"]
+[ext_resource type="PackedScene" uid="uid://da1jv2wnb7wq8" path="res://assets/ressources/room_assets/inherited/tube/simple_tube.glb" id="3_aimad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aimad"]
+size = Vector3(2, 2, 2)
+
+[node name="SimpleTubetRessourceAsset" instance=ExtResource("1_mldje")]
+script = ExtResource("2_6l66t")
+
+[node name="simple_tube" parent="." index="0" instance=ExtResource("3_aimad")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("BoxShape3D_aimad")

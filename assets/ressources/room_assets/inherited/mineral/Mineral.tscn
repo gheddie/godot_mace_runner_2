@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bomtt3imj2np0"]
+
+[ext_resource type="PackedScene" uid="uid://b260sop23mryp" path="res://assets/ressources/room_assets/AbstractRessourceAsset.tscn" id="1_j4cqr"]
+[ext_resource type="PackedScene" uid="uid://dv0pyb0cnhn8" path="res://assets/ressources/room_assets/inherited/mineral/mineral.glb" id="2_6xo11"]
+[ext_resource type="Script" uid="uid://cb5tc18hfvuuo" path="res://assets/ressources/room_assets/inherited/mineral/Mineral.gd" id="2_kv03b"]
+
+[node name="Mineral" instance=ExtResource("1_j4cqr")]
+script = ExtResource("2_kv03b")
+
+[node name="mineral" parent="." index="0" instance=ExtResource("2_6xo11")]
