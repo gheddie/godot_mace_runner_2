@@ -7,8 +7,7 @@
 [ext_resource type="Script" uid="uid://c4un5lqrlrnw4" path="res://assets/ship/CrossHair.gd" id="5_j48x4"]
 [ext_resource type="PackedScene" uid="uid://c73k01mfirw0h" path="res://assets/enemy_hierarchic/inherited/tank/scene/WeaponHolder.tscn" id="6_awu8b"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_a6jxq"]
-size = Vector3(1, 0.4, 0.8)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_awu8b"]
 
 [node name="Ship" type="RigidBody3D"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -26,8 +25,8 @@ transform = Transform3D(0.11199999, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 0.055999994,
 transform = Transform3D(0.11199999, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 0.055999994, 0, -0.20999998)
 
 [node name="Collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000005, 1.4901161e-08, -2.9802322e-08)
-shape = SubResource("BoxShape3D_a6jxq")
+transform = Transform3D(-1.835878e-08, -0.6, -8.742277e-08, 0.42000002, -2.6226834e-08, 8.742277e-08, -3.6717566e-08, -5.2453668e-08, 0.99999994, -0.15000005, 0.10000001, -2.5431184e-08)
+shape = SubResource("CapsuleShape3D_awu8b")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
