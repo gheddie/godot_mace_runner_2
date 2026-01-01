@@ -10,7 +10,7 @@ const CAMERA_SWINGBACK_FACTOR = 250.0
 const MAX_ASCENT = 1000.0
 const THRUST_UP_FORCE = 25.0
 const CAMERA_ZOOM_MULTIPLICATOR = 0.001
-const CAMERA_MAX_ZOOM_FACTOR = 10
+const CAMERA_MAX_ZOOM_FACTOR = 50
 
 var speed := 1.0
 var body_rotation: float
@@ -47,7 +47,8 @@ var boostUp: bool = false
 @onready var boostUwLeft: VfxBoost = $Thrusters/BoostUwLeft
 @onready var boostUwRight: VfxBoost = $Thrusters/BoostUwRight
 
-@onready var zoomLabel: Label = $GridContainer/ZoomLabel
+@onready var zoomFactorLabel: Label = $GridContainer/ZoomFactorLabel
+@onready var zoomStateLabel: Label = $GridContainer/ZoomStateLabel
 
 @onready var cameraForwardRaycast: RayCast3D = $WeaponHolder/ForwardRayCast
 
@@ -55,22 +56,27 @@ var boostUp: bool = false
 @onready var zoomedCenterContainer: CenterContainer = $CenterContainerZoom
 
 @onready var shipCamera: Camera3D = $WeaponHolder/Camera3D
+@onready var zoomedCamera: Camera3D = $ZoomedCamera
 
-# @onready var cameraDirectionIndicator: Node3D = $CameraDirectionIndicator
+@onready var cameraDirectionIndicator: Node3D = $CameraDirectionIndicator
 
-@onready var camMarker: Node3D = $CamMarker
+# @onready var camMarker: Node3D = $CamMarker
 
 var zoomFactor: int = 0
-
 var zoomedCameraPos: Vector3
+var cameraZoomed: bool
 
 func _ready() -> void:
 	gravity_scale = 1.5		
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _process(_delta: float) -> void:
+	if Input.is_action_pressed("activate_zoom"):
+		cameraZoomed = true
+	else:
+		cameraZoomed = false
 	fireBoosters()
-	updateZoomLabel()
+	updateZoomLabels()
 	zoomCamera()
 	
 func zoomCamera() -> void:
@@ -91,13 +97,25 @@ func zoomCamera() -> void:
 		# shipCamera.global_position = origCamPos
 		# cameraDirectionIndicator.global_position = zoomedCameraPos
 	# cameraDirectionIndicator.global_position = zoomedCameraPos
-	camMarker.global_position = moo()
+	
+	# cameraDirectionIndicator.global_position = moo()
+	# cameraDirectionIndicator.global_rotation = shipCamera.global_rotation
+	
+	zoomedCamera.global_position = moo()
+	zoomedCamera.global_rotation = shipCamera.global_rotation
+	
+	if cameraZoomed:
+		shipCamera.current = false
+		zoomedCamera.current = true
+	else:
+		shipCamera.current = true
+		zoomedCamera.current = false
 	
 func moo() -> Vector3:
-	var m = cameraForwardRaycast.global_basis * cameraForwardRaycast.target_position.normalized() * zoomFactor * 0.1
+	var m = cameraForwardRaycast.global_basis * cameraForwardRaycast.target_position.normalized() * zoomFactor * 0.5
 	var direction = cameraForwardRaycast.target_position.normalized()
 	var global_dir = cameraForwardRaycast.global_transform.basis * direction
-	var alteredCamPos: Vector3 = global_dir * 5.0 * zoomFactor
+	var alteredCamPos: Vector3 = global_dir * 2500.0 * zoomFactor
 	# return shipCamera.global_position
 	return shipCamera.global_position + m
 		
@@ -113,8 +131,12 @@ func calculateZoomedCamPosition(cameraZoomed: bool) -> Vector3:
 		"""
 	return shipCamera.global_position
 	
-func updateZoomLabel() -> void:
-	zoomLabel.text = str(str("ZOOM -> "), str(zoomFactor))
+func updateZoomLabels() -> void:
+	zoomFactorLabel.text = str(str("ZOOM -> "), str(zoomFactor))
+	if cameraZoomed:
+		zoomStateLabel.text = "ZOOMED"
+	else:
+		zoomStateLabel.text = "NOT ZOOMED"
 	
 func fireBoosters() -> void:
 	

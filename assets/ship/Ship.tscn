@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu20fn85guvwl"]
+[gd_scene load_steps=10 format=3 uid="uid://bu20fn85guvwl"]
 
 [ext_resource type="PackedScene" uid="uid://1plr1se3cupc" path="res://assets/ship/body/ShipBody.tscn" id="1_rgt4d"]
 [ext_resource type="Script" uid="uid://decg5ddv6hyxk" path="res://assets/ship/ship.gd" id="1_tf6b1"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c73k01mfirw0h" path="res://assets/enemy_hierarchic/inherited/tank/scene/WeaponHolder.tscn" id="6_awu8b"]
 [ext_resource type="PackedScene" uid="uid://cl5eld8f1uyd" path="res://assets/vfx_boost/vfx_boost.tscn" id="7_rsikk"]
 [ext_resource type="Script" uid="uid://b3fpr3yswhg5j" path="res://assets/ship/CrossHairZoomed.gd" id="8_cqell"]
-[ext_resource type="PackedScene" uid="uid://bmbvh4382o01r" path="res://assets/misc/PathMarkerEnhanced.tscn" id="9_xkdr3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_awu8b"]
 
@@ -107,7 +106,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ZoomLabel" type="Label" parent="GridContainer"]
+[node name="ZoomFactorLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ZoomStateLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
 
 [node name="CenterContainerZoom" type="CenterContainer" parent="."]
@@ -121,8 +123,7 @@ grow_vertical = 2
 layout_mode = 2
 script = ExtResource("8_cqell")
 
-[node name="CamMarker" parent="." instance=ExtResource("9_xkdr3")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.5, 0)
+[node name="ZoomedCamera" type="Camera3D" parent="."]
 
 [editable path="WeaponHolder/Weapon1"]
 [editable path="WeaponHolder/Weapon1/weapon"]
