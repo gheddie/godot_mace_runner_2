@@ -9,6 +9,8 @@ const MAX_CAMERA_SWING_DEGREES = 20.0
 const CAMERA_SWINGBACK_FACTOR = 250.0
 const MAX_ASCENT = 1000.0
 const THRUST_UP_FORCE = 25.0
+const CAMERA_ZOOM_MULTIPLICATOR = 0.001
+const CAMERA_MAX_ZOOM_FACTOR = 10
 
 var speed := 1.0
 var body_rotation: float
@@ -52,7 +54,11 @@ var boostUp: bool = false
 @onready var defaultCenterContainer: CenterContainer = $CenterContainerDefault
 @onready var zoomedCenterContainer: CenterContainer = $CenterContainerZoom
 
+@onready var shipCamera: Camera3D = $WeaponHolder/Camera3D
+
 var zoomFactor: int = 0
+
+var zoomedCameraPos: Vector3
 
 func _ready() -> void:
 	gravity_scale = 1.5		
@@ -64,13 +70,30 @@ func _process(_delta: float) -> void:
 	zoomCamera()
 	
 func zoomCamera() -> void:
+	zoomedCameraPos = calculateZoomedCamPosition(Input.is_action_pressed("look_around"))
+	# var origCamPos: Vector3 = shipCamera.global_position
 	if Input.is_action_pressed("look_around"):
-		print(str(cameraForwardRaycast.global_rotation), str(" --> "), str(zoomFactor))
+		# print(str(cameraForwardRaycast.global_rotation), str(" --> "), str(zoomFactor))
 		zoomedCenterContainer.visible = true
 		defaultCenterContainer.visible = false
+		var direction = cameraForwardRaycast.target_position.normalized()
+		var global_dir = cameraForwardRaycast.global_transform.basis * direction
+		var alteredCamPos: Vector3 = global_dir * zoomFactor * CAMERA_ZOOM_MULTIPLICATOR
+		# print(alteredCamPos)
+		# shipCamera.global_position = origCamPos + alteredCamPos
 	else:
 		zoomedCenterContainer.visible = false
 		defaultCenterContainer.visible = true
+		# shipCamera.global_position = origCamPos
+		
+func calculateZoomedCamPosition(cameraZoomed: bool) -> Vector3:
+	if !cameraZoomed:
+		return shipCamera.global_position
+	else:
+		var direction = cameraForwardRaycast.target_position.normalized()
+		var global_dir = cameraForwardRaycast.global_transform.basis * direction
+		var alteredPos: Vector3 = global_dir * zoomFactor * CAMERA_ZOOM_MULTIPLICATOR
+		return shipCamera.global_position + alteredPos
 	
 func updateZoomLabel() -> void:
 	zoomLabel.text = str(str("ZOOM -> "), str(zoomFactor))
@@ -156,11 +179,13 @@ func _input(event: InputEvent) -> void:
 func handleTargetZoom(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			print("wheel up")
-			zoomFactor += 1
+			# print("wheel up")
+			if zoomFactor < CAMERA_MAX_ZOOM_FACTOR:
+				zoomFactor += 1
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			print("wheel down")
-			zoomFactor -= 1
+			# print("wheel down")
+			if (zoomFactor > 0):
+				zoomFactor -= 1
 
 func handle_rotation(motion: Vector2) -> void:
 	if !Input.is_action_pressed("look_around"):
