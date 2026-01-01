@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bu20fn85guvwl"]
+[gd_scene load_steps=9 format=3 uid="uid://bu20fn85guvwl"]
 
 [ext_resource type="PackedScene" uid="uid://1plr1se3cupc" path="res://assets/ship/body/ShipBody.tscn" id="1_rgt4d"]
 [ext_resource type="Script" uid="uid://decg5ddv6hyxk" path="res://assets/ship/ship.gd" id="1_tf6b1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dle2yvrfic5dp" path="res://assets/weapon/weapon.tscn" id="4_35tq0"]
 [ext_resource type="Script" uid="uid://c4un5lqrlrnw4" path="res://assets/ship/CrossHair.gd" id="5_j48x4"]
 [ext_resource type="PackedScene" uid="uid://c73k01mfirw0h" path="res://assets/enemy_hierarchic/inherited/tank/scene/WeaponHolder.tscn" id="6_awu8b"]
+[ext_resource type="PackedScene" uid="uid://cl5eld8f1uyd" path="res://assets/vfx_boost/vfx_boost.tscn" id="7_rsikk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_awu8b"]
 
@@ -61,6 +62,41 @@ transform = Transform3D(1.6391773e-07, 0, -1.2500002, 0, 0.6944444, 0, 0.8333333
 [node name="Camera3D" type="Camera3D" parent="WeaponHolder"]
 transform = Transform3D(-25.000004, 2.8283358e-07, -2.1483338e-06, -1.571297e-07, 13.415637, 3.5947092, 1.4322225e-06, 4.313651, -16.098763, -1.0381456e-06, 5.208331, -15.833333)
 current = true
+
+[node name="Thrusters" type="Node3D" parent="."]
+
+[node name="BoostFwRight" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0.24000002, 0, -0.20999998)
+
+[node name="BoostRight" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(0.25, 0, -1.7763568e-15, 0, 0.25, 0, 1.7763568e-15, 0, 0.25, 4.8161105e-08, 0, -0.21)
+
+[node name="BoostLeft" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(-0.25, 0, -3.774895e-08, 0, 0.25, 0, 3.774895e-08, 0, -0.25, 1.14435394e-08, 0, 0.21)
+
+[node name="BoostFwLeft" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0.24, 0, 0.21000001)
+
+[node name="BoostBwRight" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(-1.3113417e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.3113417e-08, -0.29999992, 0, -0.21000002)
+
+[node name="BoostBwLeft" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(-1.3113417e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.3113417e-08, -0.29999998, 0, 0.20999996)
+
+[node name="BoostRightSwing" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(0.21650635, 0, 0.12499999, 0, 0.25, 0, -0.12499999, 0, 0.21650635, -0.13999996, 0, -0.21000001)
+
+[node name="BoostLeftSwing" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(-0.21650636, 0, 0.12499997, 0, 0.25, 0, -0.12499997, 0, -0.21650636, -0.13999999, 0, 0.20999998)
+
+[node name="BoostUwRight" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(2.6226832e-08, -0.29999998, -1.3113413e-08, -3.934025e-08, -1.3113416e-08, 0.29999998, -0.29999998, -2.6226832e-08, -3.9340247e-08, 7.70892e-08, 0, -0.19999999)
+
+[node name="BoostUwLeft" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(2.6226832e-08, -0.29999998, -1.3113413e-08, -3.934025e-08, -1.3113416e-08, 0.29999998, -0.29999998, -2.6226832e-08, -3.9340247e-08, 4.037163e-08, 0, 0.22000006)
+
+[node name="BoostUwFront" parent="Thrusters" instance=ExtResource("7_rsikk")]
+transform = Transform3D(2.6226832e-08, -0.29999998, -1.3113413e-08, -3.934025e-08, -1.3113416e-08, 0.29999998, -0.29999998, -2.6226832e-08, -3.9340247e-08, -0.4615023, 0, 0.008792539)
 
 [editable path="WeaponHolder/Weapon1"]
 [editable path="WeaponHolder/Weapon1/weapon"]

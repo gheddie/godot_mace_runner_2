@@ -1,53 +1,105 @@
 class_name Ship
-
 extends RigidBody3D
 
-@export var speed := 1.0
-
-var body_rotation: float
-
 const MAX_SPEED: float = 0.5
-
 const ROTATION_DIFF = 0.05
-
 const STRAFE_FACTOR = 1.5
-
 const CAMERA_SWING_FACTOR = 5.0
 const MAX_CAMERA_SWING_DEGREES = 20.0
 const CAMERA_SWINGBACK_FACTOR = 250.0
-
 const MAX_ASCENT = 1000.0
-
 const THRUST_UP_FORCE = 25.0
 
+var speed := 1.0
+var body_rotation: float
 var mouse_motion := Vector2.ZERO
+
+var moveForward: bool = false
+var moveBackward: bool = false
+
+var turnRight: bool = false
+var turnLeft: bool = false
+
+var swingLeft: bool = false
+var swingRight: bool = false
+
+var boostUp: bool = false
 
 @onready var weapon1: Weapon = $WeaponHolder/Weapon1
 @onready var weapon2: Weapon = $WeaponHolder/Weapon2
-
 @onready var castLeft: RayCast3D = $RayCastLeft
 @onready var castRight: RayCast3D = $RayCastRight
-
 @onready var weaponHolder: Node3D = $WeaponHolder
+
+@onready var boostFwRight: VfxBoost = $Thrusters/BoostFwRight
+@onready var boostFwLeft: VfxBoost = $Thrusters/BoostFwLeft
+@onready var boostBwRight: VfxBoost = $Thrusters/BoostBwRight
+@onready var boostBwLeft: VfxBoost = $Thrusters/BoostBwLeft
+
+@onready var boostRight: VfxBoost = $Thrusters/BoostRight
+@onready var boostLeft: VfxBoost = $Thrusters/BoostLeft
+@onready var boostRightSwing: VfxBoost = $Thrusters/BoostRightSwing
+@onready var boostLeftSwing: VfxBoost = $Thrusters/BoostLeftSwing
+
+@onready var boostUwFront: VfxBoost = $Thrusters/BoostUwFront
+@onready var boostUwLeft: VfxBoost = $Thrusters/BoostUwLeft
+@onready var boostUwRight: VfxBoost = $Thrusters/BoostUwRight
 
 func _ready() -> void:
 	gravity_scale = 1.5		
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+func _process(_delta: float) -> void:
+	fireBoosters()
+	
+func fireBoosters() -> void:
+	
+	boostFwRight.visible = moveForward
+	boostFwLeft.visible = moveForward
+	
+	boostBwRight.visible = moveBackward
+	boostBwLeft.visible = moveBackward
+	
+	boostRight.visible = turnLeft
+	boostLeft.visible = turnRight
+	
+	boostRightSwing.visible = swingLeft
+	boostLeftSwing.visible = swingRight
+	
+	boostUwFront.visible = boostUp
+	boostUwLeft.visible = boostUp
+	boostUwRight.visible = boostUp
+		
 func _physics_process(_delta: float) -> void:
 	
 	handle_rotation(mouse_motion)
 	handleLookAround(mouse_motion, _delta)
 	
 	var velocity := Vector3.ZERO	
+	
 	if Input.is_action_pressed('move_forward'):
 		velocity.x -= clamp(speed, 0.0, MAX_SPEED)
+		moveForward = true
+	else:
+		moveForward = false
+		
 	if Input.is_action_pressed('move_backward'):
 		velocity.x += clamp(speed, 0.0, MAX_SPEED)
+		moveBackward = true
+	else:
+		moveBackward = false
+		
 	if Input.is_action_pressed('turn_right'):
 		velocity.z -= clamp(speed, 0.0, MAX_SPEED) * STRAFE_FACTOR
+		turnRight = true
+	else:
+		turnRight = false
+		
 	if Input.is_action_pressed('turn_left'):
 		velocity.z += clamp(speed, 0.0, MAX_SPEED) * STRAFE_FACTOR
+		turnLeft = true
+	else:
+		turnLeft = false
 		
 	rotation.y = body_rotation		
 	apply_impulse(velocity.rotated(Vector3.UP, rotation.y), Vector3.ZERO)	
@@ -66,6 +118,9 @@ func thrust_upwards() -> void:
 	if global_position.y <= MAX_ASCENT:
 		if Input.is_action_pressed("thrust_upwards"):
 			apply_force(Vector3(0,THRUST_UP_FORCE,0),Vector3(0,0,0))
+			boostUp = true
+		else:
+			boostUp = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -76,17 +131,24 @@ func _input(event: InputEvent) -> void:
 
 func handle_rotation(motion: Vector2) -> void:
 	if !Input.is_action_pressed("look_around"):
-		body_rotation += motion.x	
+		body_rotation += motion.x
+		# print(str("motion.x --> "), str(motion.x))
+		if motion.x== 0.0:
+			print("AAA")
+			swingLeft = false
+			swingRight = false
+		else:
+			print("BBB")
+			if motion.x > 0.0:
+				swingLeft = true
+			else:
+				swingRight = true
 
 func handleLookAround(motion: Vector2, _delta: float) -> void:
 	if Input.is_action_pressed("look_around"):				
-		
 		var absX = abs(weaponHolder.rotation_degrees.x)
 		print(str("absX -> ", absX))
 		var absY = abs(weaponHolder.rotation_degrees.y)
-		# print(absY)
-		
-		# x
 		if weaponHolder.rotation_degrees.x >= -MAX_CAMERA_SWING_DEGREES and weaponHolder.rotation_degrees.x <= MAX_CAMERA_SWING_DEGREES:
 			weaponHolder.rotation_degrees.x -= mouse_motion.y * _delta * 1000.0 * CAMERA_SWING_FACTOR			
 			print(str("weaponHolder.rotation_degrees.x -> ", weaponHolder.rotation_degrees.x))
@@ -95,10 +157,7 @@ func handleLookAround(motion: Vector2, _delta: float) -> void:
 				weaponHolder.rotation_degrees.x = MAX_CAMERA_SWING_DEGREES
 			else:
 				weaponHolder.rotation_degrees.x = -MAX_CAMERA_SWING_DEGREES
-			
-		# y				
 		weaponHolder.rotation_degrees.y += mouse_motion.x * _delta * 1000.0 * CAMERA_SWING_FACTOR
-		
 	else:
 		# swing weapon holder (camera rotation) back to ZERO
 		swingBackCamera(_delta)
