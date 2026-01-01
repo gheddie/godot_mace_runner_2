@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu20fn85guvwl"]
+[gd_scene load_steps=10 format=3 uid="uid://bu20fn85guvwl"]
 
 [ext_resource type="PackedScene" uid="uid://1plr1se3cupc" path="res://assets/ship/body/ShipBody.tscn" id="1_rgt4d"]
 [ext_resource type="Script" uid="uid://decg5ddv6hyxk" path="res://assets/ship/ship.gd" id="1_tf6b1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c4un5lqrlrnw4" path="res://assets/ship/CrossHair.gd" id="5_j48x4"]
 [ext_resource type="PackedScene" uid="uid://c73k01mfirw0h" path="res://assets/enemy_hierarchic/inherited/tank/scene/WeaponHolder.tscn" id="6_awu8b"]
 [ext_resource type="PackedScene" uid="uid://cl5eld8f1uyd" path="res://assets/vfx_boost/vfx_boost.tscn" id="7_rsikk"]
+[ext_resource type="Script" uid="uid://b3fpr3yswhg5j" path="res://assets/ship/CrossHairZoomed.gd" id="8_cqell"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_awu8b"]
 
@@ -29,14 +30,14 @@ transform = Transform3D(0.11199999, 0, 0, 0, 0.084, 0, 0, 0, 0.084, 0.055999994,
 transform = Transform3D(-1.835878e-08, -0.6, -8.742277e-08, 0.42000002, -2.6226834e-08, 8.742277e-08, -3.6717566e-08, -5.2453668e-08, 0.99999994, -0.15000005, 0.10000001, -2.5431184e-08)
 shape = SubResource("CapsuleShape3D_awu8b")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainerDefault" type="CenterContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CrossHair" type="Control" parent="CenterContainer"]
+[node name="CrossHairDefault" type="Control" parent="CenterContainerDefault"]
 layout_mode = 2
 script = ExtResource("5_j48x4")
 
@@ -107,6 +108,17 @@ grow_vertical = 2
 
 [node name="ZoomLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
+
+[node name="CenterContainerZoom" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrossHairZoomed" type="Control" parent="CenterContainerZoom"]
+layout_mode = 2
+script = ExtResource("8_cqell")
 
 [editable path="WeaponHolder/Weapon1"]
 [editable path="WeaponHolder/Weapon1/weapon"]

@@ -1,4 +1,5 @@
 @tool
+class_name CrossHairDefault
 extends Control
 
 const TOP_OFFSET = 100

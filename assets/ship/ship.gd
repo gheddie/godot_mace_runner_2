@@ -47,6 +47,11 @@ var boostUp: bool = false
 
 @onready var zoomLabel: Label = $GridContainer/ZoomLabel
 
+@onready var cameraForwardRaycast: RayCast3D = $WeaponHolder/ForwardRayCast
+
+@onready var defaultCenterContainer: CenterContainer = $CenterContainerDefault
+@onready var zoomedCenterContainer: CenterContainer = $CenterContainerZoom
+
 var zoomFactor: int = 0
 
 func _ready() -> void:
@@ -56,6 +61,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	fireBoosters()
 	updateZoomLabel()
+	zoomCamera()
+	
+func zoomCamera() -> void:
+	if Input.is_action_pressed("look_around"):
+		print(str(cameraForwardRaycast.global_rotation), str(" --> "), str(zoomFactor))
+		zoomedCenterContainer.visible = true
+		defaultCenterContainer.visible = false
+	else:
+		zoomedCenterContainer.visible = false
+		defaultCenterContainer.visible = true
 	
 func updateZoomLabel() -> void:
 	zoomLabel.text = str(str("ZOOM -> "), str(zoomFactor))
@@ -165,11 +180,11 @@ func handleLookAround(motion: Vector2, _delta: float) -> void:
 		swingLeft = false
 		swingRight = false
 		var absX = abs(weaponHolder.rotation_degrees.x)
-		print(str("absX -> ", absX))
+		# print(str("absX -> ", absX))
 		var absY = abs(weaponHolder.rotation_degrees.y)
 		if weaponHolder.rotation_degrees.x >= -MAX_CAMERA_SWING_DEGREES and weaponHolder.rotation_degrees.x <= MAX_CAMERA_SWING_DEGREES:
 			weaponHolder.rotation_degrees.x -= mouse_motion.y * _delta * 1000.0 * CAMERA_SWING_FACTOR			
-			print(str("weaponHolder.rotation_degrees.x -> ", weaponHolder.rotation_degrees.x))
+			# print(str("weaponHolder.rotation_degrees.x -> ", weaponHolder.rotation_degrees.x))
 		else:
 			if weaponHolder.rotation_degrees.x >= 0.0:
 				weaponHolder.rotation_degrees.x = MAX_CAMERA_SWING_DEGREES
@@ -199,3 +214,9 @@ func swingBackCamera(_delta: float) -> void:
 		weaponHolder.rotation_degrees.z -= 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
 	if weaponHolder.rotation_degrees.z < 0:
 		weaponHolder.rotation_degrees.z += 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
+
+func isLookingAround() -> bool:
+	if Input.is_action_pressed("look_around"):
+		return true
+	else:
+		return false

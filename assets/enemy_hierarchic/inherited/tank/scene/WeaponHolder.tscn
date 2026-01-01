@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c73k01mfirw0h"]
+[gd_scene load_steps=3 format=3 uid="uid://c73k01mfirw0h"]
 
+[ext_resource type="Script" uid="uid://ctkw0tmcaeuct" path="res://assets/WeaponHolder.gd" id="1_ecwvs"]
 [ext_resource type="PackedScene" uid="uid://s3rvnlf6qxy0" path="res://assets/enemy_hierarchic/inherited/tank/glb/enemy_mech_weaponholder.glb" id="1_y6n61"]
 
 [node name="WeaponHolder" type="Node3D"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_ecwvs")
 
 [node name="enemy_mech_weaponholder" parent="." instance=ExtResource("1_y6n61")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 0)
+
+[node name="ForwardRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(100, 4.371139e-06, 4.3711384e-06, -4.371139e-06, -4.371139e-06, 100, 4.371139e-06, -100, -4.371139e-06, 0, 0, 0)
