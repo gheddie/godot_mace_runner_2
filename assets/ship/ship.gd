@@ -56,6 +56,10 @@ var boostUp: bool = false
 
 @onready var shipCamera: Camera3D = $WeaponHolder/Camera3D
 
+# @onready var cameraDirectionIndicator: Node3D = $CameraDirectionIndicator
+
+@onready var camMarker: Node3D = $CamMarker
+
 var zoomFactor: int = 0
 
 var zoomedCameraPos: Vector3
@@ -76,17 +80,29 @@ func zoomCamera() -> void:
 		# print(str(cameraForwardRaycast.global_rotation), str(" --> "), str(zoomFactor))
 		zoomedCenterContainer.visible = true
 		defaultCenterContainer.visible = false
-		var direction = cameraForwardRaycast.target_position.normalized()
-		var global_dir = cameraForwardRaycast.global_transform.basis * direction
-		var alteredCamPos: Vector3 = global_dir * zoomFactor * CAMERA_ZOOM_MULTIPLICATOR
+		# var direction = cameraForwardRaycast.target_position.normalized()
+		# var global_dir = cameraForwardRaycast.global_transform.basis * direction
+		# var alteredCamPos: Vector3 = global_dir * zoomFactor * CAMERA_ZOOM_MULTIPLICATOR
 		# print(alteredCamPos)
-		# shipCamera.global_position = origCamPos + alteredCamPos
+		# cameraDirectionIndicator.global_position = alteredCamPos
 	else:
 		zoomedCenterContainer.visible = false
 		defaultCenterContainer.visible = true
 		# shipCamera.global_position = origCamPos
+		# cameraDirectionIndicator.global_position = zoomedCameraPos
+	# cameraDirectionIndicator.global_position = zoomedCameraPos
+	camMarker.global_position = moo()
+	
+func moo() -> Vector3:
+	var m = cameraForwardRaycast.global_basis * cameraForwardRaycast.target_position.normalized() * zoomFactor * 0.1
+	var direction = cameraForwardRaycast.target_position.normalized()
+	var global_dir = cameraForwardRaycast.global_transform.basis * direction
+	var alteredCamPos: Vector3 = global_dir * 5.0 * zoomFactor
+	# return shipCamera.global_position
+	return shipCamera.global_position + m
 		
 func calculateZoomedCamPosition(cameraZoomed: bool) -> Vector3:
+	"""
 	if !cameraZoomed:
 		return shipCamera.global_position
 	else:
@@ -94,6 +110,8 @@ func calculateZoomedCamPosition(cameraZoomed: bool) -> Vector3:
 		var global_dir = cameraForwardRaycast.global_transform.basis * direction
 		var alteredPos: Vector3 = global_dir * zoomFactor * CAMERA_ZOOM_MULTIPLICATOR
 		return shipCamera.global_position + alteredPos
+		"""
+	return shipCamera.global_position
 	
 func updateZoomLabel() -> void:
 	zoomLabel.text = str(str("ZOOM -> "), str(zoomFactor))
@@ -219,7 +237,7 @@ func handleLookAround(motion: Vector2, _delta: float) -> void:
 	else:
 		# swing weapon holder (camera rotation) back to ZERO
 		swingBackCamera(_delta)
-		zoomFactor = 0
+		# zoomFactor = 0
 		
 func swingBackCamera(_delta: float) -> void:
 	
