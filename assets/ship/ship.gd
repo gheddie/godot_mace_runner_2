@@ -45,12 +45,20 @@ var boostUp: bool = false
 @onready var boostUwLeft: VfxBoost = $Thrusters/BoostUwLeft
 @onready var boostUwRight: VfxBoost = $Thrusters/BoostUwRight
 
+@onready var zoomLabel: Label = $GridContainer/ZoomLabel
+
+var zoomFactor: int = 0
+
 func _ready() -> void:
 	gravity_scale = 1.5		
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _process(_delta: float) -> void:
 	fireBoosters()
+	updateZoomLabel()
+	
+func updateZoomLabel() -> void:
+	zoomLabel.text = str(str("ZOOM -> "), str(zoomFactor))
 	
 func fireBoosters() -> void:
 	
@@ -128,24 +136,34 @@ func _input(event: InputEvent) -> void:
 			mouse_motion = -event.relative * 0.001		
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	handleTargetZoom(event)
+	
+func handleTargetZoom(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			print("wheel up")
+			zoomFactor += 1
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			print("wheel down")
+			zoomFactor -= 1
 
 func handle_rotation(motion: Vector2) -> void:
 	if !Input.is_action_pressed("look_around"):
 		body_rotation += motion.x
 		# print(str("motion.x --> "), str(motion.x))
 		if motion.x== 0.0:
-			print("AAA")
 			swingLeft = false
 			swingRight = false
 		else:
-			print("BBB")
 			if motion.x > 0.0:
 				swingLeft = true
 			else:
 				swingRight = true
 
 func handleLookAround(motion: Vector2, _delta: float) -> void:
-	if Input.is_action_pressed("look_around"):				
+	if Input.is_action_pressed("look_around"):	
+		swingLeft = false
+		swingRight = false
 		var absX = abs(weaponHolder.rotation_degrees.x)
 		print(str("absX -> ", absX))
 		var absY = abs(weaponHolder.rotation_degrees.y)
@@ -161,6 +179,7 @@ func handleLookAround(motion: Vector2, _delta: float) -> void:
 	else:
 		# swing weapon holder (camera rotation) back to ZERO
 		swingBackCamera(_delta)
+		zoomFactor = 0
 		
 func swingBackCamera(_delta: float) -> void:
 	
