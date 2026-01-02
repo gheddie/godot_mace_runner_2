@@ -64,6 +64,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	fireBoosters()
 	zoomCamera()
+	chooseActiveCamera()
 	
 func zoomCamera() -> void:
 	if Input.is_action_pressed("look_around"):
@@ -73,8 +74,9 @@ func zoomCamera() -> void:
 		zoomedCenterContainer.visible = false
 		defaultCenterContainer.visible = true
 	zoomedCamera.global_position = calculateZoomedCameraPosition()
-	zoomedCamera.global_rotation = shipCamera.global_rotation
-	
+	zoomedCamera.global_rotation = shipCamera.global_rotation		
+		
+func chooseActiveCamera() -> void:
 	if zoomFactor > 0:
 		shipCamera.current = false
 		zoomedCamera.current = true
