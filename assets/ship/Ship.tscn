@@ -99,19 +99,6 @@ transform = Transform3D(2.6226832e-08, -0.29999998, -1.3113413e-08, -3.934025e-0
 [node name="BoostUwFront" parent="Thrusters" instance=ExtResource("7_rsikk")]
 transform = Transform3D(2.6226832e-08, -0.29999998, -1.3113413e-08, -3.934025e-08, -1.3113416e-08, 0.29999998, -0.29999998, -2.6226832e-08, -3.9340247e-08, -0.4615023, 0, 0.008792539)
 
-[node name="GridContainer" type="GridContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ZoomFactorLabel" type="Label" parent="GridContainer"]
-layout_mode = 2
-
-[node name="ZoomStateLabel" type="Label" parent="GridContainer"]
-layout_mode = 2
-
 [node name="CenterContainerZoom" type="CenterContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0

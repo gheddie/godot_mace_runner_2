@@ -10,7 +10,7 @@ const CAMERA_SWINGBACK_FACTOR = 250.0
 const MAX_ASCENT = 1000.0
 const THRUST_UP_FORCE = 25.0
 const CAMERA_ZOOM_MULTIPLICATOR = 0.001
-const CAMERA_MAX_ZOOM_FACTOR = 50
+const CAMERA_MAX_ZOOM_FACTOR = 25
 
 var speed := 1.0
 var body_rotation: float
@@ -47,9 +47,6 @@ var boostUp: bool = false
 @onready var boostUwLeft: VfxBoost = $Thrusters/BoostUwLeft
 @onready var boostUwRight: VfxBoost = $Thrusters/BoostUwRight
 
-@onready var zoomFactorLabel: Label = $GridContainer/ZoomFactorLabel
-@onready var zoomStateLabel: Label = $GridContainer/ZoomStateLabel
-
 @onready var cameraForwardRaycast: RayCast3D = $WeaponHolder/ForwardRayCast
 
 @onready var defaultCenterContainer: CenterContainer = $CenterContainerDefault
@@ -58,86 +55,40 @@ var boostUp: bool = false
 @onready var shipCamera: Camera3D = $WeaponHolder/Camera3D
 @onready var zoomedCamera: Camera3D = $ZoomedCamera
 
-@onready var cameraDirectionIndicator: Node3D = $CameraDirectionIndicator
-
-# @onready var camMarker: Node3D = $CamMarker
-
 var zoomFactor: int = 0
-var zoomedCameraPos: Vector3
-var cameraZoomed: bool
 
 func _ready() -> void:
 	gravity_scale = 1.5		
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("activate_zoom"):
-		cameraZoomed = true
-	else:
-		cameraZoomed = false
 	fireBoosters()
-	updateZoomLabels()
 	zoomCamera()
 	
 func zoomCamera() -> void:
-	zoomedCameraPos = calculateZoomedCamPosition(Input.is_action_pressed("look_around"))
-	# var origCamPos: Vector3 = shipCamera.global_position
 	if Input.is_action_pressed("look_around"):
-		# print(str(cameraForwardRaycast.global_rotation), str(" --> "), str(zoomFactor))
 		zoomedCenterContainer.visible = true
 		defaultCenterContainer.visible = false
-		# var direction = cameraForwardRaycast.target_position.normalized()
-		# var global_dir = cameraForwardRaycast.global_transform.basis * direction
-		# var alteredCamPos: Vector3 = global_dir * zoomFactor * CAMERA_ZOOM_MULTIPLICATOR
-		# print(alteredCamPos)
-		# cameraDirectionIndicator.global_position = alteredCamPos
 	else:
 		zoomedCenterContainer.visible = false
 		defaultCenterContainer.visible = true
-		# shipCamera.global_position = origCamPos
-		# cameraDirectionIndicator.global_position = zoomedCameraPos
-	# cameraDirectionIndicator.global_position = zoomedCameraPos
-	
-	# cameraDirectionIndicator.global_position = moo()
-	# cameraDirectionIndicator.global_rotation = shipCamera.global_rotation
-	
-	zoomedCamera.global_position = moo()
+	zoomedCamera.global_position = calculateZoomedCameraPosition()
 	zoomedCamera.global_rotation = shipCamera.global_rotation
 	
-	if cameraZoomed:
+	if zoomFactor > 0:
 		shipCamera.current = false
 		zoomedCamera.current = true
 	else:
 		shipCamera.current = true
 		zoomedCamera.current = false
 	
-func moo() -> Vector3:
+func calculateZoomedCameraPosition() -> Vector3:
 	var m = cameraForwardRaycast.global_basis * cameraForwardRaycast.target_position.normalized() * zoomFactor * 0.5
 	var direction = cameraForwardRaycast.target_position.normalized()
 	var global_dir = cameraForwardRaycast.global_transform.basis * direction
 	var alteredCamPos: Vector3 = global_dir * 2500.0 * zoomFactor
-	# return shipCamera.global_position
 	return shipCamera.global_position + m
 		
-func calculateZoomedCamPosition(cameraZoomed: bool) -> Vector3:
-	"""
-	if !cameraZoomed:
-		return shipCamera.global_position
-	else:
-		var direction = cameraForwardRaycast.target_position.normalized()
-		var global_dir = cameraForwardRaycast.global_transform.basis * direction
-		var alteredPos: Vector3 = global_dir * zoomFactor * CAMERA_ZOOM_MULTIPLICATOR
-		return shipCamera.global_position + alteredPos
-		"""
-	return shipCamera.global_position
-	
-func updateZoomLabels() -> void:
-	zoomFactorLabel.text = str(str("ZOOM -> "), str(zoomFactor))
-	if cameraZoomed:
-		zoomStateLabel.text = "ZOOMED"
-	else:
-		zoomStateLabel.text = "NOT ZOOMED"
-	
 func fireBoosters() -> void:
 	
 	boostFwRight.visible = moveForward
@@ -245,11 +196,9 @@ func handleLookAround(motion: Vector2, _delta: float) -> void:
 		swingLeft = false
 		swingRight = false
 		var absX = abs(weaponHolder.rotation_degrees.x)
-		# print(str("absX -> ", absX))
 		var absY = abs(weaponHolder.rotation_degrees.y)
 		if weaponHolder.rotation_degrees.x >= -MAX_CAMERA_SWING_DEGREES and weaponHolder.rotation_degrees.x <= MAX_CAMERA_SWING_DEGREES:
 			weaponHolder.rotation_degrees.x -= mouse_motion.y * _delta * 1000.0 * CAMERA_SWING_FACTOR			
-			# print(str("weaponHolder.rotation_degrees.x -> ", weaponHolder.rotation_degrees.x))
 		else:
 			if weaponHolder.rotation_degrees.x >= 0.0:
 				weaponHolder.rotation_degrees.x = MAX_CAMERA_SWING_DEGREES
@@ -257,9 +206,7 @@ func handleLookAround(motion: Vector2, _delta: float) -> void:
 				weaponHolder.rotation_degrees.x = -MAX_CAMERA_SWING_DEGREES
 		weaponHolder.rotation_degrees.y += mouse_motion.x * _delta * 1000.0 * CAMERA_SWING_FACTOR
 	else:
-		# swing weapon holder (camera rotation) back to ZERO
-		swingBackCamera(_delta)
-		# zoomFactor = 0
+		swingBackCamera(_delta)		
 		
 func swingBackCamera(_delta: float) -> void:
 	
@@ -279,9 +226,3 @@ func swingBackCamera(_delta: float) -> void:
 		weaponHolder.rotation_degrees.z -= 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
 	if weaponHolder.rotation_degrees.z < 0:
 		weaponHolder.rotation_degrees.z += 1.0 * CAMERA_SWINGBACK_FACTOR * _delta
-
-func isLookingAround() -> bool:
-	if Input.is_action_pressed("look_around"):
-		return true
-	else:
-		return false
